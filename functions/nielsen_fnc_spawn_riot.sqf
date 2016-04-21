@@ -33,9 +33,9 @@
 		removeAllWeapons _unit;
 			
 			//Eventhandler that fires pubVar for client to cancel animation
-		//_unit addEventHandler ["firedNear", { cim_animation = [true,(_this select 0),""];(_this select 0) doFSM ["\@Nielsen_CIM\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos (_this select 0),(_this select 0)];}];
+		//_unit addEventHandler ["firedNear", { cim_animation = [true,(_this select 0),""];(_this select 0) doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos (_this select 0),(_this select 0)];}];
 		_unit addEventHandler ["hit", { broadcastedInfo = ["cim_animation", [true,(_this select 0),""]] call CBA_fnc_publicVariable;}];
 		
-		_unit doFSM ["\@Nielsen_CIM\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos _unit,_unit];
+		_unit doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos _unit,_unit];
 	};
 

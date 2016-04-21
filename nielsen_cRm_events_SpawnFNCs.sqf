@@ -45,7 +45,7 @@ CRM_SpawnFnc_riot = {
 			//Eventhandler that fires pubVar for client to cancel animation
 		_unit addEventHandler ["Killed", { broadcastedInfo = ["cim_animation", [true,(_this select 0),""]] call CBA_fnc_publicVariable;}];
 		
-		_unit doFSM ["\@Nielsen_CIM\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos _unit,_unit];
+		_unit doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos _unit,_unit];
 	};
 };
 
@@ -68,7 +68,7 @@ CRM_SpawnFnc_Intel = {
 	_CivType = _civilians select (floor(random(count _civilians)));
 	_unit = _grp createUnit [_CivType, _SpawnPos, [], 0, "NONE"]; 
 	removeAllWeapons _unit;
-	_unit doFSM ["\@Nielsen_CIM\addons\nielsen_cim\fsm\nielsen_crm_intel.fsm",getPos _unit,_unit];
+	_unit doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_intel.fsm",getPos _unit,_unit];
 
 };
 
@@ -124,7 +124,7 @@ CRM_SpawnFnc_Ambush = {
 		if (CRM_DebugMode) then {diag_log format ["CRM - Ambush triggered. Spawning %1 hostile civilians.",_spawnCount];};	
 	};
 	//Execute(!) FSM to control ambush  (ERROR FIX THE FSM!!!)
-	//nul = [_grp,_pos] ExecFSM "\@Nielsen_CIM\addons\nielsen_cim\fsm\nielsen_crm_ambush.fsm";
+	//nul = [_grp,_pos] ExecFSM "\addons\nielsen_cim\fsm\nielsen_crm_ambush.fsm";
 };
 
 //Massacre FUNCTION

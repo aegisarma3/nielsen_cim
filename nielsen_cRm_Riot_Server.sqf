@@ -20,7 +20,7 @@ _riotFNC = {
 	private ["_thisMan","_item"];
 	_thisMan = _x;
 
-	_thisMan doFSM ["\@Nielsen_CIM\addons\nielsen_cim\fsm\nielsen_crm_riot.fsm",getPos _thisman,_thisman];
+	_thisMan doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_riot.fsm",getPos _thisman,_thisman];
 	//Set variable on unit to check in other (local) scripts
 	//_thisMan setVariable ["crm_evidence",_item];
 };

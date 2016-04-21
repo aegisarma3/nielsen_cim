@@ -53,7 +53,7 @@ while {true} do {
 			_pos = getPos _newRoad;
 
 			//Setup tirepile on road as center of event (unique name to pass to client because of smoke)
-			call compile format ["crm_tirepile_%1 = createVehicle [""misc_tyreheap"", %2, [], 5, ""NONE""];",CRM_TirePile_Count,_pos];
+			call compile format ["crm_tirepile_%1 = createVehicle [""Land_Tyres_F"", %2, [], 5, ""NONE""];",CRM_TirePile_Count,_pos];
 			call compile format ["crm_tirepile_%1 setVariable [""crm_tirePile"",true];",CRM_TirePile_Count];
 			call compile format ["crm_tirepile_%1 inflame true;",CRM_TirePile_Count];
 			call compile format ["crm_tirepile_%1 setpos [(getpos crm_tirepile_%1) select 0, (getpos crm_tirepile_%1) select 1, -0.2];",CRM_TirePile_Count];

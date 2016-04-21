@@ -45,21 +45,21 @@ if (isServer) then {
 	
 	//Spawn crew in chopper
 	CIM_HeliGrp = createGroup west;
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Pilot_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Pilot_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit moveInDriver CIM_Chopper;	
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Pilot_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Pilot_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit moveInCargo [CIM_Chopper,12];	
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit MoveInTurret [CIM_Chopper,[0]];	
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit MoveInTurret [CIM_Chopper,[1]];	
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit MoveInCargo [CIM_Chopper,0];
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit MoveInCargo [CIM_Chopper,3];
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit MoveInCargo [CIM_Chopper,9];
-	_unit = CIM_HeliGrp createUnit ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
+	_unit = CIM_HeliGrp createVehicle ["US_Soldier_Crew_EP1", _spawnPos, [], 0, "NONE"]; 
 	_unit MoveInCargo [CIM_Chopper,10];
 
 	CIM_Chopper setbehaviour "careless";

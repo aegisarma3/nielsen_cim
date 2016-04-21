@@ -22,8 +22,8 @@
 	if (CRM_DebugMode) then {diag_log format ["CRM - Masssacre triggered. Spawning %1 civilians, of types %2",_spawnCount,_civilians];};
 	
 	//create dog
-	//"fin" createUnit [_pos, _grp];
-	 _dog = _grp2 createUnit ["fin", _pos, [], 5, "NONE"];
+	//"fin" createVehicle [_pos, _grp];
+	 _dog = _grp2 createVehicle ["fin", _pos, [], 5, "NONE"];
 	
 	//Spawn civilians
 	for "_y" from 1 to _spawnCount do {		
@@ -32,7 +32,7 @@
 
 		_CivType = _civilians select (floor(random(count _civilians)));
 		
-		_unit = _grp createUnit [_CivType, _pos, [], 20, "NONE"];
+		_unit = _grp createVehicle [_CivType, _pos, [], 20, "NONE"];
 
 		removeAllitems _unit;
 		_unit setDamage 1;
@@ -47,7 +47,7 @@
 
 		_CivType = _CivTypeWomen select (floor(random(count _CivTypeWomen)));
 	
-		_unit = _grp2 createUnit [_CivType, _Pos, [], 20, "NONE"];
+		_unit = _grp2 createVehicle [_CivType, _Pos, [], 20, "NONE"];
 		//_unit allowDamage false;
 		//removeAllWeapons _unit;
 			

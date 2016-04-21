@@ -29,7 +29,7 @@
 		_house = _newPos nearestObject "HOUSE";
 		_SpawnPos = _house buildingPos 0;
 	};
-	_unit = _grp createUnit [_enemyType, _spawnPos, [], 0, "NONE"];
+	_unit = _grp createVehicle [_enemyType, _spawnPos, [], 0, "NONE"];
 	_leader = _unit;
 	
 	//Spawn civilians
@@ -46,7 +46,7 @@
 		_SpawnPos = _house buildingPos (floor random  _No);
 		
 		_CivType = _civilians select (floor(random(count _civilians)));
-		_unit = _grp createUnit [_CivType, _SpawnPos, [], 0, "NONE"];
+		_unit = _grp createVehicle [_CivType, _SpawnPos, [], 0, "NONE"];
 		
 		_unit setUnitPos "DOWN";
 		_unit addWeapon "AK_74";

@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CRM) Civilian Reaction Module		///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cRm_init.sqf:				///////////////////
 ///////////	This script initializes the reaction///////////////////
 ///////////	module. Gets and sets variables etc.///////////////////
@@ -42,8 +42,11 @@ waitUntil {(isDedicated) || !(isNull player)};
 	};
 	if (isNil {_this getVariable "nielsen_crm_civilians"}) then
 	{
-		_this setVariable ["nielsen_crm_civilians", ["TK_CIV_Takistani01_EP1","TK_CIV_Takistani02_EP1","TK_CIV_Takistani03_EP1","TK_CIV_Takistani04_EP1","TK_CIV_Takistani05_EP1","TK_CIV_Takistani06_EP1","TK_CIV_Worker01_EP1","TK_CIV_Worker02_EP1"]];
+		_this setVariable ["nielsen_crm_civilians", ["C_man_1","C_man_polo_2_F","C_man_polo_5_F","C_man_polo_6_F","C_man_1_3_F","C_man_p_fugitive_F","C_man_polo_4_F"]];
 	};
+
+
+
 
 
 //Init variables
@@ -54,7 +57,7 @@ CRM_Side = side (CRM_SyncUnits select 0);
 if (CRM_side == east) then {CRM_EnemySide = west} else {CRM_EnemySide = east};
 
 	//Set players
-if (isMultipleyer) then {
+if (isServer) then {
 	CRM_Players = playableUnits;
 } else {
 	CRM_Players = [player];
@@ -85,7 +88,7 @@ if (isServer) then {
 	if (CRM_Module getVariable "nielsen_crm_evidence") then {
 		nul = [] execVM "\nielsen_cim\nielsen_crm_evidence_Server.sqf";
 	};
-}; 
+};
 
 //Launch clientside intel script
 if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
@@ -104,5 +107,3 @@ CRM_SpawnFnc_Gathering = compile preprocessFile "\nielsen_cim\functions\nielsen_
 CRM_SpawnFnc_Intel = compile preprocessFile "\nielsen_cim\functions\nielsen_fnc_spawn_intel.sqf";
 CRM_SpawnFnc_ambush = compile preprocessFile "\nielsen_cim\functions\nielsen_fnc_spawn_ambush.sqf";
 CRM_SpawnFnc_Massacre = compile preprocessFile "\nielsen_cim\functions\nielsen_fnc_spawn_massacre.sqf";
-
-

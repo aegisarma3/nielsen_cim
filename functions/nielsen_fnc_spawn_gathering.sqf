@@ -28,12 +28,12 @@
 		
 		_CivType = _civilians select (floor(random(count _civilians)));
 		if (CRM_DebugMode) then {diag_log format ["grp: %1,type %2, pos %3",_grp,_CivType,_SpawnPos];};
-		_unit = _grp createUnit [_CivType, _Pos, [], 100, "NONE"];
+		_unit = _grp createVehicle [_CivType, _Pos, [], 100, "NONE"];
 		_unit allowDamage false;
 		removeAllitems _unit;
 			
 			//Eventhandler that fires pubVar for client to cancel animation
-		//_unit addEventHandler ["firedNear", { cim_animation = [true,(_this select 0),""];(_this select 0) doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos (_this select 0),(_this select 0)];}];
+		//_unit addEventHandler ["firedNear", { cim_animation = [true,(_this select 0),""];(_this select 0) doFSM ["\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos (_this select 0),(_this select 0)];}];
 		_unit addEventHandler ["hit", { broadcastedInfo = ["cim_animation", [true,(_this select 0),""]] call CBA_fnc_publicVariable;}];
 		
 		_unit doFSM ["\nielsen_cim\fsm\nielsen_crm_gathering.fsm",getPos _unit,_unit];

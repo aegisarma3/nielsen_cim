@@ -58,7 +58,7 @@ while {true} do {
 			//make all civilians do the riot.fsm
 			//civilian setFriend [west,0];
 			{
-				_x doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_riot.fsm",getPos _x,_x];
+				_x doFSM ["\nielsen_cim\fsm\nielsen_crm_riot.fsm",getPos _x,_x];
 			} forEach _civilians;
 			//Debug
 			if (CRM_DebugMode) then {diag_log format ["CRM - Riot triggered. Civilians: %1",_civilians];};
@@ -69,7 +69,7 @@ while {true} do {
 		{
 			//make a random civilian give intel
 			_newCiv = _civilians select (floor(random(count _civilians)));
-			_newCiv doFSM ["\addons\nielsen_cim\fsm\nielsen_crm_intel.fsm",getPos _newCiv,_newCiv];
+			_newCiv doFSM ["\nielsen_cim\fsm\nielsen_crm_intel.fsm",getPos _newCiv,_newCiv];
 
 			//Debug
 			if (CRM_DebugMode) then {diag_log format ["CRM - Intel triggered. Civilian: %1",_newCiv];};

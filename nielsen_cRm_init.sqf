@@ -100,7 +100,7 @@ if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
 [east] call CBA_fnc_createCenter;
 
 //Initialize BIS function for making smoke
-BIS_Effects_Burn = compile preprocessFile "\A3\data_f\ParticleEffects\SCRIPTS\muzzle\smokeshell.sqf";
+BIS_Effects_Burn = compile preprocessFile "\nielsen_cim\functions\nielsen_fnc_spawn_burn.sqf";
 
 //Compile spawn functions
 CRM_SpawnFnc_Gathering = compile preprocessFile "\nielsen_cim\functions\nielsen_fnc_spawn_gathering.sqf";

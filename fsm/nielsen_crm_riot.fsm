@@ -1,0 +1,362 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, nielsen_cRm_riot">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,-868.207886,-110.843300,-778.207886,-60.843307,0.000000,"START"};
+item1[] = {"_",8,218,-749.371094,-95.849312,-701.813049,-74.337685,0.000000,""};
+item2[] = {"Find_nearest_tar",2,250,-242.841049,-108.446083,-152.840973,-58.446075,0.000000,"Find" \n "nearest" \n "target"};
+item3[] = {"move_to_spot",2,250,-20.456360,26.058731,69.543633,76.058731,0.000000,"move to" \n "spot"};
+item4[] = {"in__range",4,218,-9.620747,253.004333,60.788681,291.520233,1.000000,"in " \n "range"};
+item5[] = {"failed",4,218,-101.135979,105.428413,-34.779652,145.295242,0.000000,"failed"};
+item6[] = {"no_targets",4,218,-223.482178,-190.390640,-171.378418,-154.707047,0.000000,"no" \n "targets"};
+item7[] = {"Throw_rock",2,250,-14.564531,328.248474,65.032211,372.303650,0.000000,"Throw" \n "rock"};
+item8[] = {"Still_in_range",4,218,-18.897539,414.303986,71.102478,464.303986,1.000000,"Still" \n "in range"};
+item9[] = {"not_in_in_range",4,218,-133.479492,306.288483,-43.479591,356.288544,0.000000,"not in" \n "in range"};
+item10[] = {"target__found",4,218,-118.063232,-99.408714,-60.064484,-67.093651,1.000000,"target " \n "found"};
+item11[] = {"Find_new__spot",2,250,-20.264208,-108.279663,69.735809,-58.279644,0.000000,"Find new " \n "spot"};
+item12[] = {"_",8,218,-3.497130,-35.851761,51.868385,-3.169001,0.000000,""};
+item13[] = {"END",1,250,116.939407,-196.986908,206.939438,-146.986923,0.000000,"END"};
+item14[] = {"not__alive",4,218,125.020264,30.244709,198.523727,69.522003,50.000000,"not " \n "alive"};
+item15[] = {"Go_to_road",2,250,-681.833923,-111.857948,-577.471863,-56.472145,0.000000,"Go to road"};
+item16[] = {"move_completed",4,218,-543.717407,-102.747414,-476.158051,-66.211845,1.000000,"move" \n "completed"};
+item17[] = {"move__failed",4,218,-663.880554,-14.913555,-596.321289,22.519672,0.000000,"move " \n "failed"};
+item18[] = {"join_ALICE___wait",2,250,-432.765869,-108.077087,-342.765869,-58.077087,0.000000,"join ALICE" \n "&" \n "wait for player"};
+item19[] = {"player__near",4,218,-314.653595,-99.352852,-259.311798,-65.815506,1.000000,"player " \n "near"};
+item20[] = {"players__gone",4,218,-415.130096,-223.899765,-359.788330,-190.362381,100.000000,"players " \n "gone"};
+item21[] = {"completed",4,218,-6.673042,107.775070,55.715008,141.588760,1.000000,"completed"};
+item22[] = {"check_range",2,250,-11.184143,174.669067,60.725292,217.051971,0.000000,"check range"};
+link0[] = {0,1};
+link1[] = {1,15};
+link2[] = {2,6};
+link3[] = {2,10};
+link4[] = {3,5};
+link5[] = {3,14};
+link6[] = {3,21};
+link7[] = {4,7};
+link8[] = {5,2};
+link9[] = {6,13};
+link10[] = {7,8};
+link11[] = {7,9};
+link12[] = {7,14};
+link13[] = {8,7};
+link14[] = {9,2};
+link15[] = {10,11};
+link16[] = {11,12};
+link17[] = {12,3};
+link18[] = {14,13};
+link19[] = {15,16};
+link20[] = {15,17};
+link21[] = {16,18};
+link22[] = {17,15};
+link23[] = {18,19};
+link24[] = {18,20};
+link25[] = {19,2};
+link26[] = {20,13};
+link27[] = {21,22};
+link28[] = {22,4};
+link29[] = {22,9};
+globals[] = {0.000000,0,0,0,0,640,480,1,30,6316128,1,-1014.322083,388.374573,540.289001,-417.948730,1032,705,1};
+window[] = {0,-1,-1,-1,-1,884,75,1515,34,1,1050};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "nielsen_cRm_riot";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/"_thisMan = _target;" \n
+       "" \n
+       "if (CRM_DebugMode) then {diag_log format [""CRM - Civ %1 joining riot"",_thisman]};" \n
+       "" \n
+       "_thisMan setUnitPos ""UP"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Go_to_road";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Find_nearest_tar">*/
+    class Find_nearest_tar
+    {
+      name = "Find_nearest_tar";
+      init = /*%FSM<STATEINIT""">*/"//Gather nearby targets and put in list" \n
+       "private [""_nearMen"",""_nearTarget"",""_nearTargets""];" \n
+       "_nearTargets = [];" \n
+       "_nearMen = nearestObjects [_thisman, [""MAN""],400];" \n
+       "for ""_y"" from 0 to (count _nearMen - 1) do {" \n
+       "	if (side (_nearMen select _y) == CRM_side) then {" \n
+       "		_nearTargets = _nearTargets + [(_nearMen select _y)];	" \n
+       "	};" \n
+       "};" \n
+       "//Get nearest target" \n
+       "_newTarget = _nearTargets select 0;" \n
+       "" \n
+       "hint ""finding target"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "target__found">*/
+        class target__found
+        {
+          priority = 1.000000;
+          to="Find_new__spot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((count _nearTargets) >= 1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_targets">*/
+        class no_targets
+        {
+          priority = 0.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((count _nearTargets) == 0 OR !(alive _thisMan));" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_spot">*/
+    class move_to_spot
+    {
+      name = "move_to_spot";
+      init = /*%FSM<STATEINIT""">*/"_thisMan moveTo _newpos;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not__alive">*/
+        class not__alive
+        {
+          priority = 50.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _thisMan)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "completed">*/
+        class completed
+        {
+          priority = 1.000000;
+          to="check_range";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "failed">*/
+        class failed
+        {
+          priority = 0.000000;
+          to="Find_nearest_tar";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/" moveToFailed _thisMan"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Throw_rock">*/
+    class Throw_rock
+    {
+      name = "Throw_rock";
+      init = /*%FSM<STATEINIT""">*/"_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_throwStone = _thisMan fireAtTarget [_newTarget,currentWeapon _thisMan];" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "not__alive">*/
+        class not__alive
+        {
+          priority = 50.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!(alive _thisMan)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Still_in_range">*/
+        class Still_in_range
+        {
+          priority = 1.000000;
+          to="Throw_rock";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(  ((_thisMan distance _newTarget) <= 70) AND ((_thisMan distance _newTarget) >= 20));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "not_in_in_range">*/
+        class not_in_in_range
+        {
+          priority = 0.000000;
+          to="Find_nearest_tar";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"( ((_thisMan distance _newTarget) < 20) OR ((_thisMan distance _newTarget) > 70));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Find_new__spot">*/
+    class Find_new__spot
+    {
+      name = "Find_new__spot";
+      init = /*%FSM<STATEINIT""">*/"_newpos = [getpos _newTarget,random 360,[30,50],false,1] call SHK_pos;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="move_to_spot";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END">*/
+    class END
+    {
+      name = "END";
+      init = /*%FSM<STATEINIT""">*/"if (CRM_DebugMode) then {diag_log format [""CRM - Civ %1 leaving riot"",_thisman]};" \n
+       "" \n
+       "_thisMan setUnitPos ""AUTO"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Go_to_road">*/
+    class Go_to_road
+    {
+      name = "Go_to_road";
+      init = /*%FSM<STATEINIT""">*/"_roads = (getPos _thisMan) nearRoads 50;" \n
+       "" \n
+       "_newRoad = _roads select (floor(random(count _roads)));" \n
+       "" \n
+       "_thisMan moveTo (getPos _newRoad);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "move_completed">*/
+        class move_completed
+        {
+          priority = 1.000000;
+          to="join_ALICE___wait";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "move__failed">*/
+        class move__failed
+        {
+          priority = 0.000000;
+          to="Go_to_road";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "join_ALICE___wait">*/
+    class join_ALICE___wait
+    {
+      name = "join_ALICE___wait";
+      init = /*%FSM<STATEINIT""">*/"//[_thisMan] call BIS_ALICE_fnc_civilianSet;" \n
+       "hint ""test1"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "players__gone">*/
+        class players__gone
+        {
+          priority = 100.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player__near">*/
+        class player__near
+        {
+          priority = 1.000000;
+          to="Find_nearest_tar";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_thisMan, 150] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "check_range">*/
+    class check_range
+    {
+      name = "check_range";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "in__range">*/
+        class in__range
+        {
+          priority = 1.000000;
+          to="Throw_rock";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"( ((_thisMan distance _newTarget) <= 70) AND ((_thisMan distance _newTarget) >= 20) );"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "not_in_in_range">*/
+        class not_in_in_range
+        {
+          priority = 0.000000;
+          to="Find_nearest_tar";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"( ((_thisMan distance _newTarget) < 20) OR ((_thisMan distance _newTarget) > 70));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "END",
+  };
+};
+/*%FSM</COMPILE>*/

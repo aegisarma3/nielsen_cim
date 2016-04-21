@@ -1,0 +1,227 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, nielsen_crm_women">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,-397.387482,348.448334,-307.387482,398.448334,0.000000,"START"};
+item1[] = {"_",8,218,-236.077469,351.029297,-146.077469,401.029297,0.000000,""};
+item2[] = {"init",2,250,-99.286560,353.610229,-9.286545,403.610229,0.000000,"init"};
+item3[] = {"_",8,218,-97.996262,450.396210,-7.996269,500.396179,0.000000,""};
+item4[] = {"Find_dead_man",2,250,-99.286743,583.315674,-9.286720,633.315674,0.000000,"Find" \n "dead man"};
+item5[] = {"man_alive_",4,218,-221.554657,583.876038,-131.554657,633.876038,1.000000,"man" \n "alive?"};
+item6[] = {"_",4,218,-98.117950,657.425537,-8.117950,707.425537,0.000000,""};
+item7[] = {"move_to_corpse",2,250,-98.118057,771.166077,-8.118042,821.166077,0.000000,"move" \n "to corpse"};
+item8[] = {"move_failed",4,218,-259.556580,772.083008,-169.556580,822.083008,1.000000,"move" \n "failed"};
+item9[] = {"move_completed",4,218,-99.034500,879.403809,-9.034500,929.403809,0.000000,"move" \n "completed"};
+item10[] = {"do_animation",2,250,-99.952057,988.558044,-9.952053,1038.557617,0.000000,"do" \n "animation"};
+item11[] = {"All_Players_Gone",4,218,-265.199768,974.006470,-129.821289,1061.122559,100.000000,"All" \n "Players" \n "Gone"};
+item12[] = {"END_",1,250,-433.506622,763.875427,-331.395782,819.725220,0.000000,"END" \n ""};
+item13[] = {"Clean_up",2,250,-440.939606,982.695007,-323.628967,1050.902222,0.000000,"Clean" \n "up"};
+item14[] = {"_",8,218,-411.737305,890.422668,-352.406433,925.524963,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {4,6};
+link6[] = {5,4};
+link7[] = {6,7};
+link8[] = {7,8};
+link9[] = {7,9};
+link10[] = {8,4};
+link11[] = {9,10};
+link12[] = {10,11};
+link13[] = {11,13};
+link14[] = {13,14};
+link15[] = {14,12};
+globals[] = {0.000000,0,0,0,0,640,480,1,16,6316128,1,-791.171021,285.434418,1098.546875,362.361786,1031,705,1};
+window[] = {0,-1,-1,-1,-1,1025,175,1614,175,1,1049};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "nielsen_crm_women";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="init";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "init">*/
+    class init
+    {
+      name = "init";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "" \n
+       "private [""_anims""];" \n
+       "" \n
+       "_WomenAnim = [""Cwmn_GalkinaLiesIdle1""];" \n
+       "" \n
+       "_woman = _target;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Find_dead_man";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Find_dead_man">*/
+    class Find_dead_man
+    {
+      name = "Find_dead_man";
+      init = /*%FSM<STATEINIT""">*/"_men = nearestObjects [_woman, [""MAN""], 50];" \n
+       "" \n
+       "_man = _men select (floor(random(count _men)));"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "man_alive_">*/
+        class man_alive_
+        {
+          priority = 1.000000;
+          to="Find_dead_man";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"alive _man;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="move_to_corpse";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_corpse">*/
+    class move_to_corpse
+    {
+      name = "move_to_corpse";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_manPos = getPos _man;" \n
+       "_newPos = [(_manPos select 0),(_manPos select 1) + 2,0];" \n
+       "" \n
+       "_woman moveTo _newPos;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "move_failed">*/
+        class move_failed
+        {
+          priority = 1.000000;
+          to="Find_dead_man";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _woman;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "move_completed">*/
+        class move_completed
+        {
+          priority = 0.000000;
+          to="do_animation";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _woman;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "do_animation">*/
+    class do_animation
+    {
+      name = "do_animation";
+      init = /*%FSM<STATEINIT""">*/"_woman doWatch _man;" \n
+       "" \n
+       "_anim = _WomenAnim select (floor(random(count _WomenAnim)));" \n
+       "_woman switchMove _anim;" \n
+       "" \n
+       "_broadcastedInfo = [""cim_animation"", [true,_woman,_anim]] call CBA_fnc_publicVariable;" \n
+       "" \n
+       "_woman disableAI ""anim"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "All_Players_Gone">*/
+        class All_Players_Gone
+        {
+          priority = 100.000000;
+          to="Clean_up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_woman, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_">*/
+    class END_
+    {
+      name = "END_";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Clean_up">*/
+    class Clean_up
+    {
+      name = "Clean_up";
+      init = /*%FSM<STATEINIT""">*/"deleteVehicle _woman;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="END_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "END_",
+  };
+};
+/*%FSM</COMPILE>*/

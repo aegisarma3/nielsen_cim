@@ -1,0 +1,540 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, nielsen_crm_gathering">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START_",0,250,-320.216492,51.431328,-230.216492,101.431328,0.000000,"START" \n ""};
+item1[] = {"_",8,218,-302.546906,164.245102,-246.526978,192.497879,0.000000,""};
+item2[] = {"Init",2,250,-319.678162,259.459869,-229.678131,309.459900,0.000000,"Init"};
+item3[] = {"_",8,218,-300.369446,341.724487,-249.966583,372.408783,0.000000,""};
+item4[] = {"getPos_near_tire",2,250,-320.216431,424.980042,-230.216400,474.980042,0.000000,"getPos" \n "near tireheap"};
+item5[] = {"_",8,218,-307.351654,527.478943,-247.284729,561.913757,0.000000,""};
+item6[] = {"move_to_position",2,250,-321.165466,612.049683,-231.165436,662.049683,0.000000,"move to" \n "position"};
+item7[] = {"failed",4,218,-445.345795,519.140259,-355.346008,569.140259,0.000000,"failed"};
+item8[] = {"completed",4,218,-322.802338,700.682007,-232.802338,750.682007,1.000000,"completed"};
+item9[] = {"Weapons___only_1",2,250,-321.509491,807.068359,-231.509491,857.068359,0.000000,"Weapons?" \n "(only 1 time)"};
+item10[] = {"weapons",4,218,-165.763550,893.277344,-75.763557,943.277344,1.000000,"weapons"};
+item11[] = {"no_weapons",4,218,-452.404877,889.781616,-362.404877,939.781616,0.000000,"no weapons"};
+item12[] = {"Arm_civ",2,250,-166.275635,982.687012,-76.275612,1032.687500,0.000000,"Arm civ"};
+item13[] = {"Move_or_stand_still",2,250,-452.861023,1059.392700,-362.861023,1109.392456,0.000000,"Move" \n "or" \n "stand still?"};
+item14[] = {"move",4,218,-370.045135,1252.890259,-280.045197,1302.890015,1.000000,"move"};
+item15[] = {"getPos_near_tyre",2,250,-322.480591,1377.196899,-232.480560,1427.196899,0.000000,"getPos" \n "near tyreheap"};
+item16[] = {"else",4,218,-560.426147,1251.208008,-470.427338,1301.208008,0.000000,"else"};
+item17[] = {"Display_unarmed",2,250,-560.396362,1373.542969,-470.397217,1423.542969,0.000000,"Display" \n "unarmed" \n "animation"};
+item18[] = {"_",8,218,-152.711487,1087.536377,-91.488358,1119.950439,0.000000,""};
+item19[] = {"Move_or_stand_still_1",2,250,-167.099976,1187.456543,-77.099892,1237.456543,0.000000,"Move" \n "or" \n "stand still?"};
+item20[] = {"move",4,218,-270.672058,1253.315308,-180.672073,1303.315308,1.000000,"move"};
+item21[] = {"else",4,218,-64.146843,1257.335815,25.853022,1307.335815,0.000000,"else"};
+item22[] = {"Display_armed_an",2,250,-63.579727,1373.078857,26.420120,1423.078857,0.000000,"Display" \n "armed" \n "animation"};
+item23[] = {"_",8,218,-304.191895,1482.487061,-244.124969,1516.921875,0.000000,""};
+item24[] = {"Animation_done",4,218,95.199768,1372.774658,185.199829,1422.774658,0.000000,"Animation" \n "done"};
+item25[] = {"move_to_position_1",2,250,-319.263611,1562.026245,-229.263580,1612.026245,0.000000,"move to" \n "position"};
+item26[] = {"failed",4,218,-443.443939,1469.116821,-353.444153,1519.116821,0.000000,"failed"};
+item27[] = {"completed",4,218,-189.632568,1472.040283,-99.632538,1522.040283,1.000000,"completed"};
+item28[] = {"All_Players_Gone",4,218,-344.157349,1713.883911,-208.778931,1800.999756,100.000000,"All" \n "Players" \n "Gone"};
+item29[] = {"",7,210,-519.384277,1753.353638,-511.384277,1761.353638,0.000000,""};
+item30[] = {"",7,210,-23.113539,1753.806396,-15.113533,1761.806396,0.000000,""};
+item31[] = {"END_",1,250,-367.792938,2097.753418,-185.147797,2188.461426,0.000000,"END" \n ""};
+item32[] = {"wrong_tireheap",4,218,-170.271027,423.735229,-71.839409,476.545715,10.000000,"wrong" \n "tireheap"};
+item33[] = {"Clean_up",2,250,-333.982513,1878.708130,-216.672028,1946.915161,0.000000,"Clean" \n "up"};
+item34[] = {"_",8,218,-321.804413,1990.263306,-231.804413,2040.262085,0.000000,""};
+item35[] = {"Animation_done",4,218,-699.847290,1372.774658,-609.847229,1422.774658,0.000000,"Animation" \n "done"};
+item36[] = {"Cuffed",4,4314,-142.944870,1879.772827,-52.944893,1929.772827,100.000000,"Cuffed"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {4,32};
+link6[] = {5,6};
+link7[] = {6,7};
+link8[] = {6,8};
+link9[] = {7,4};
+link10[] = {8,9};
+link11[] = {9,10};
+link12[] = {9,11};
+link13[] = {10,12};
+link14[] = {11,13};
+link15[] = {12,18};
+link16[] = {13,14};
+link17[] = {13,16};
+link18[] = {14,15};
+link19[] = {15,23};
+link20[] = {16,17};
+link21[] = {17,29};
+link22[] = {17,35};
+link23[] = {17,36};
+link24[] = {18,19};
+link25[] = {19,20};
+link26[] = {19,21};
+link27[] = {20,15};
+link28[] = {21,22};
+link29[] = {22,24};
+link30[] = {22,30};
+link31[] = {22,36};
+link32[] = {23,25};
+link33[] = {24,22};
+link34[] = {25,26};
+link35[] = {25,27};
+link36[] = {25,28};
+link37[] = {26,15};
+link38[] = {27,15};
+link39[] = {28,33};
+link40[] = {29,28};
+link41[] = {30,28};
+link42[] = {32,4};
+link43[] = {33,34};
+link44[] = {34,31};
+link45[] = {35,17};
+link46[] = {36,31};
+globals[] = {0.000000,0,0,0,0,640,480,1,49,6316128,1,-940.649353,624.277588,2257.663818,1187.563599,1031,705,1};
+window[] = {0,-1,-1,-1,-1,959,295,1734,109,1,1049};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "nielsen_crm_gathering";
+  class States
+  {
+    /*%FSM<STATE "START_">*/
+    class START_
+    {
+      name = "START_";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Init";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Init">*/
+    class Init
+    {
+      name = "Init";
+      init = /*%FSM<STATEINIT""">*/"private [""_thisMan"",""_newpos"",""_rnd"",""_animUnarmed"",""_animArmed"",""_armsCheck"",""_anim"",""_tirePile"",""_tirePileArray""];" \n
+       "_thisMan = _target;" \n
+       "" \n
+       "_thisMan setUnitPos ""UP"";" \n
+       "" \n
+       "_armsCheck = false;" \n
+       "_hasWeapons = false;" \n
+       "" \n
+       "_animUnarmed = [""zevl2_c0start"",""zevl4_c0start"",""zevl5_c0start"",""zevl6_c0start"",""zevl7_c0start"",""zevl1_c0start"",""c7a_bravoTOerc_idle1"",""c7a_bravoTOerc_idle2"",""c7a_bravoTOerc_idle3"",""c7a_bravoTOerc_idle5"",""c7a_bravoTOerc_idle7"",""c7a_bravoTOerc_idle9"",""c7a_bravoTOerc_idle13"",""c7a_bravoTOerc_idle20"",""c7a_bravoTOerc_idle24""];" \n
+       "_animArmed = [""c4coming2cdf_genericstani2"",""c4coming2cdf_genericstani3"",""c4coming2cdf_genericstani4"",""c4coming2cdf_genericstani5""];" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="getPos_near_tire";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "getPos_near_tire">*/
+    class getPos_near_tire
+    {
+      name = "getPos_near_tire";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_tirePileArray = (getPos _thisMan) nearObjects [""misc_tyreheap"",120];" \n
+       "_TirePile = _tirePileArray select (floor(random(count _tirePileArray)));" \n
+       "_newpos = [getpos _tirePile,random 360,[3,10],false,1] call SHK_pos;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "wrong_tireheap">*/
+        class wrong_tireheap
+        {
+          priority = 10.000000;
+          to="getPos_near_tire";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"isNil {_tirePile getVariable ""crm_tirePile""}"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="move_to_position";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_position">*/
+    class move_to_position
+    {
+      name = "move_to_position";
+      init = /*%FSM<STATEINIT""">*/"_thisMan moveTo _newPos;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "completed">*/
+        class completed
+        {
+          priority = 1.000000;
+          to="Weapons___only_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "failed">*/
+        class failed
+        {
+          priority = 0.000000;
+          to="getPos_near_tire";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Weapons___only_1">*/
+    class Weapons___only_1
+    {
+      name = "Weapons___only_1";
+      init = /*%FSM<STATEINIT""">*/"_thisMan allowDamage true;" \n
+       "" \n
+       "_rnd = random 1;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "weapons">*/
+        class weapons
+        {
+          priority = 1.000000;
+          to="Arm_civ";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(((_rnd <= 0.2) AND !(_armsCheck)) OR (_hasWeapons));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "no_weapons">*/
+        class no_weapons
+        {
+          priority = 0.000000;
+          to="Move_or_stand_still";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Arm_civ">*/
+    class Arm_civ
+    {
+      name = "Arm_civ";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_thisMan addWeapon ""AK_74"";" \n
+       "" \n
+       "_thisMan addMagazine ""30Rnd_545x39_AK"";" \n
+       "_thisMan addMagazine ""30Rnd_545x39_AK"";" \n
+       "" \n
+       "_armsCheck = true;" \n
+       "_hasWeapons = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Move_or_stand_still_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Move_or_stand_still">*/
+    class Move_or_stand_still
+    {
+      name = "Move_or_stand_still";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_armsCheck = true;" \n
+       "" \n
+       "_rndMove = random 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "move">*/
+        class move
+        {
+          priority = 1.000000;
+          to="getPos_near_tyre";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_rndMove <= 0.3;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "else">*/
+        class else
+        {
+          priority = 0.000000;
+          to="Display_unarmed";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "getPos_near_tyre">*/
+    class getPos_near_tyre
+    {
+      name = "getPos_near_tyre";
+      init = /*%FSM<STATEINIT""">*/"_thisMan forceWalk true;" \n
+       "_thisMan forceSpeed 2;" \n
+       "" \n
+       "_newpos = [getpos _tirePile,random 360,[3,13],false,1] call SHK_pos;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="move_to_position_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Display_unarmed">*/
+    class Display_unarmed
+    {
+      name = "Display_unarmed";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_thisMan doWatch _tirePile;" \n
+       "_anim = _animUnarmed select (floor(random(count _animUnarmed)));" \n
+       "_thisMan switchMove _anim;" \n
+       "" \n
+       "_broadcastedInfo = [""cim_animation"", [true,_thisman,_anim]] call CBA_fnc_publicVariable;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cuffed">*/
+        class Cuffed
+        {
+          priority = 100.000000;
+          to="END_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_thisMan in CIM_List_Keycuff)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "All_Players_Gone">*/
+        class All_Players_Gone
+        {
+          priority = 100.000000;
+          to="Clean_up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Animation_done">*/
+        class Animation_done
+        {
+          priority = 0.000000;
+          to="Display_unarmed";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_thisMan animationPhase _anim) == 1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Move_or_stand_still_1">*/
+    class Move_or_stand_still_1
+    {
+      name = "Move_or_stand_still_1";
+      init = /*%FSM<STATEINIT""">*/"_rndMove = random 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "move">*/
+        class move
+        {
+          priority = 1.000000;
+          to="getPos_near_tyre";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_rndMove <= 0.2;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "else">*/
+        class else
+        {
+          priority = 0.000000;
+          to="Display_armed_an";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Display_armed_an">*/
+    class Display_armed_an
+    {
+      name = "Display_armed_an";
+      init = /*%FSM<STATEINIT""">*/"_thisMan doWatch _tirePile;" \n
+       "" \n
+       "_anim = _animArmed select (floor(random(count _animArmed)));" \n
+       "_thisMan switchMove _anim;" \n
+       "" \n
+       "_broadcastedInfo = [""cim_animation"", [true,_thisman,_anim]] call CBA_fnc_publicVariable;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Cuffed">*/
+        class Cuffed
+        {
+          priority = 100.000000;
+          to="END_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(_thisMan in CIM_List_Keycuff)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "All_Players_Gone">*/
+        class All_Players_Gone
+        {
+          priority = 100.000000;
+          to="Clean_up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Animation_done">*/
+        class Animation_done
+        {
+          priority = 0.000000;
+          to="Display_armed_an";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_thisMan animationPhase _anim) == 1)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "move_to_position_1">*/
+    class move_to_position_1
+    {
+      name = "move_to_position_1";
+      init = /*%FSM<STATEINIT""">*/"_thisMan moveTo _newPos;" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "All_Players_Gone">*/
+        class All_Players_Gone
+        {
+          priority = 100.000000;
+          to="Clean_up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "completed">*/
+        class completed
+        {
+          priority = 1.000000;
+          to="getPos_near_tyre";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "failed">*/
+        class failed
+        {
+          priority = 0.000000;
+          to="getPos_near_tyre";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END_">*/
+    class END_
+    {
+      name = "END_";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Clean_up">*/
+    class Clean_up
+    {
+      name = "Clean_up";
+      init = /*%FSM<STATEINIT""">*/"deleteVehicle _thisMan;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="END_";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START_";
+  finalStates[] =
+  {
+    "END_",
+  };
+};
+/*%FSM</COMPILE>*/

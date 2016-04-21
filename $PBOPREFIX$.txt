@@ -1,0 +1,5 @@
+///////<HEADER>///////
+prefix=nielsen_cim
+Pbo Type is: Arma Addon
+Sha: 'AA3B4228A1EF04825D5D75A3AA048A314FD44B52'
+//////</HEADER>//////

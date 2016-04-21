@@ -1,0 +1,491 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, nielsen_crm_intel">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,-697.739990,-260.378479,-607.739624,-210.378418,0.000000,"START"};
+item1[] = {"_",8,218,-567.341675,-250.380798,-518.886841,-221.153351,0.000000,""};
+item2[] = {"Find_nearest__pl",2,250,-184.009659,-0.702027,-94.009644,49.297981,0.000000,"Find" \n "nearest " \n "player"};
+item3[] = {"Too_far",4,218,-172.023361,100.504593,-106.328629,133.143631,2.000000,"Too" \n "far"};
+item4[] = {"In_range",4,218,-3.631065,2.305458,66.693222,38.416718,1.000000,"In" \n "range"};
+item5[] = {"Move_to_player",2,250,116.477310,-1.816620,206.477325,48.183372,0.000000,"Move" \n "to player"};
+item6[] = {"Move_completed",4,218,262.121643,1.518747,330.997650,43.736229,1.000000,"Move" \n "completed"};
+item7[] = {"Move_failed",4,218,124.259857,-118.554413,194.247696,-75.225143,0.000000,"Move" \n "failed"};
+item8[] = {"Where_is__player",2,250,252.014374,94.816383,342.014374,144.816391,0.000000,"Where is" \n " player?"};
+item9[] = {"too_far",4,218,131.461853,103.720177,196.026398,140.617096,0.000000,"too far"};
+item10[] = {"up_close",4,218,262.493042,173.860397,331.682220,213.069595,2.000000,"up close"};
+item11[] = {"Give_intel",2,250,255.662079,264.532654,345.662109,314.532654,0.000000,"Give intel"};
+item12[] = {"END",1,250,257.130096,421.123993,347.130127,471.123962,0.000000,"END"};
+item13[] = {"_",8,218,388.218567,279.246948,417.812073,299.538849,0.000000,""};
+item14[] = {"",7,210,-144.296341,442.353363,-136.296341,450.353363,0.000000,""};
+item15[] = {"player_gone",4,218,403.700287,100.855690,469.395020,133.494751,1.000000,"player" \n "gone"};
+item16[] = {"",7,210,431.514984,443.178986,439.514984,451.178986,0.000000,""};
+item17[] = {"Get_out_to_the_r",2,250,-472.588562,-258.413818,-382.588562,-208.413818,0.000000,"Get out" \n "to the road"};
+item18[] = {"completed",4,218,-184.770035,-259.744019,-94.770035,-209.743988,1.000000,"completed"};
+item19[] = {"failed",4,218,-471.686951,-335.424744,-381.686951,-285.424622,0.000000,"failed"};
+item20[] = {"Wait_for_player",2,250,-183.763275,-176.113007,-93.763260,-126.113113,0.000000,"Wait for" \n "player"};
+item21[] = {"Player_Near",4,218,-177.604034,-88.262695,-99.331795,-45.052437,0.000000,"Player" \n "Near"};
+item22[] = {"Player_gone",4,218,-310.829590,-175.308060,-220.829575,-125.308060,1.000000,"Player" \n "gone"};
+item23[] = {"",7,210,-269.426361,442.223236,-261.426514,450.223236,0.000000,""};
+item24[] = {"Player__Close",4,218,-42.096931,159.559494,83.690353,242.483780,50.000000,"Player " \n "Close"};
+item25[] = {"",7,210,-431.169189,198.470459,-423.169189,206.470459,0.000000,""};
+item26[] = {"Check_Player_Ide",2,250,-26.257923,268.915009,63.742081,318.915009,0.000000,"Check" \n "Player" \n "Identity"};
+item27[] = {"_",8,218,130.010269,276.644562,182.662918,310.364929,0.000000,""};
+item28[] = {"Get_into_a_house",2,250,513.062256,264.424927,603.062256,314.424927,0.000000,"Get into" \n "a house"};
+item29[] = {"Move_completed",4,218,524.076599,197.062622,592.952637,239.280121,1.000000,"Move" \n "completed"};
+item30[] = {"Move_failed",4,218,626.795471,265.733215,696.783325,309.062439,0.000000,"Move" \n "failed"};
+item31[] = {"Wait_for_players",2,250,519.775696,100.542664,597.641541,142.608704,0.000000,"Wait for" \n "players to" \n "leave"};
+link0[] = {0,1};
+link1[] = {1,17};
+link2[] = {2,3};
+link3[] = {2,4};
+link4[] = {2,24};
+link5[] = {3,14};
+link6[] = {4,5};
+link7[] = {5,6};
+link8[] = {5,7};
+link9[] = {5,24};
+link10[] = {6,8};
+link11[] = {7,2};
+link12[] = {8,9};
+link13[] = {8,10};
+link14[] = {8,15};
+link15[] = {9,5};
+link16[] = {10,11};
+link17[] = {11,13};
+link18[] = {13,28};
+link19[] = {14,12};
+link20[] = {15,16};
+link21[] = {16,12};
+link22[] = {17,18};
+link23[] = {17,19};
+link24[] = {17,25};
+link25[] = {18,20};
+link26[] = {19,17};
+link27[] = {20,21};
+link28[] = {20,22};
+link29[] = {20,25};
+link30[] = {21,2};
+link31[] = {22,23};
+link32[] = {23,14};
+link33[] = {24,26};
+link34[] = {25,24};
+link35[] = {26,27};
+link36[] = {27,11};
+link37[] = {28,29};
+link38[] = {28,30};
+link39[] = {29,31};
+link40[] = {30,28};
+link41[] = {31,15};
+globals[] = {0.000000,0,0,0,0,640,480,1,34,6316128,1,-841.600769,823.242615,607.480286,-533.155884,1029,705,1};
+window[] = {0,-1,-1,-1,-1,996,211,1647,146,1,1047};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "nielsen_crm_intel";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "private [""_thisMan"",""_roads"",""_newRoad"",""_nearPlayer"",""_distance""];" \n
+       "_thisMan = _target;" \n
+       "" \n
+       "_thisMan forceWalk true;" \n
+       "_thisMan forceSpeed 2;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Get_out_to_the_r";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Find_nearest__pl">*/
+    class Find_nearest__pl
+    {
+      name = "Find_nearest__pl";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "private [""_unit"",""_closest""];" \n
+       "" \n
+       "if (isMultiPlayer) then {" \n
+       "	_unit = playableunits select 0;" \n
+       "	_closest = [_unit,_unit distance _thisMan];" \n
+       "	for ""_i"" from 1 to (count playableunits - 1) do {" \n
+       "		_unit = playableunits select _i;" \n
+       "		_dist = _unit distance _thisMan;" \n
+       "		if (_dist < _closest select 1) then {" \n
+       "			_closest = [_unit,_dist];" \n
+       "		};" \n
+       "	};" \n
+       "	_nearPlayer = _closest select 0;" \n
+       "	_distance = _closest select 1;" \n
+       "} else {" \n
+       "" \n
+       "	_nearPlayer = player;" \n
+       "	_distance = _thisMan distance player;" \n
+       "" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player__Close">*/
+        class Player__Close
+        {
+          priority = 50.000000;
+          to="Check_Player_Ide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_thisMan, 5] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Too_far">*/
+        class Too_far
+        {
+          priority = 2.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "In_range">*/
+        class In_range
+        {
+          priority = 1.000000;
+          to="Move_to_player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_thisMan distance _nearPlayer) <= 300);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Move_to_player">*/
+    class Move_to_player
+    {
+      name = "Move_to_player";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "_thisMan moveTo (getPos _nearPlayer);" \n
+       "" \n
+       "_thisMan forceWalk true;" \n
+       "_thisMan forceSpeed 2;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player__Close">*/
+        class Player__Close
+        {
+          priority = 50.000000;
+          to="Check_Player_Ide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_thisMan, 5] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Move_completed">*/
+        class Move_completed
+        {
+          priority = 1.000000;
+          to="Where_is__player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Move_failed">*/
+        class Move_failed
+        {
+          priority = 0.000000;
+          to="Find_nearest__pl";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Where_is__player">*/
+    class Where_is__player
+    {
+      name = "Where_is__player";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "up_close">*/
+        class up_close
+        {
+          priority = 2.000000;
+          to="Give_intel";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_thisMan distance _nearPlayer) <= 5);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "player_gone">*/
+        class player_gone
+        {
+          priority = 1.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "too_far">*/
+        class too_far
+        {
+          priority = 0.000000;
+          to="Move_to_player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_thisMan distance _nearPlayer) > 5);"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Give_intel">*/
+    class Give_intel
+    {
+      name = "Give_intel";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "" \n
+       "//pass info to player" \n
+       "_pubVar = [""CRM_newInfo"", [true,_nearPlayer]] call CBA_fnc_publicVariable;" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Get_into_a_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END">*/
+    class END
+    {
+      name = "END";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "deleteVehicle _thisMan;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Get_out_to_the_r">*/
+    class Get_out_to_the_r
+    {
+      name = "Get_out_to_the_r";
+      init = /*%FSM<STATEINIT""">*/"_roads = (getPos _thisMan) nearRoads 50;" \n
+       "" \n
+       "_newRoad = _roads select (floor(random(count _roads)));" \n
+       "" \n
+       "_thisMan moveTo (getPos _newRoad);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player__Close">*/
+        class Player__Close
+        {
+          priority = 50.000000;
+          to="Check_Player_Ide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_thisMan, 5] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "completed">*/
+        class completed
+        {
+          priority = 1.000000;
+          to="Wait_for_player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "failed">*/
+        class failed
+        {
+          priority = 0.000000;
+          to="Get_out_to_the_r";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wait_for_player">*/
+    class Wait_for_player
+    {
+      name = "Wait_for_player";
+      init = /*%FSM<STATEINIT""">*/"_thisMan setDamage 0;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Player__Close">*/
+        class Player__Close
+        {
+          priority = 50.000000;
+          to="Check_Player_Ide";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_thisMan, 5] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Player_gone">*/
+        class Player_gone
+        {
+          priority = 1.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Player_Near">*/
+        class Player_Near
+        {
+          priority = 0.000000;
+          to="Find_nearest__pl";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"([_thisMan, 100] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Check_Player_Ide">*/
+    class Check_Player_Ide
+    {
+      name = "Check_Player_Ide";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "if (isMultiPlayer) then {" \n
+       "	_unit = playableunits select 0;" \n
+       "	_closest = [_unit,_unit distance _thisMan];" \n
+       "	for ""_i"" from 1 to (count playableunits - 1) do {" \n
+       "		_unit = playableunits select _i;" \n
+       "		_dist = _unit distance _thisMan;" \n
+       "		if (_dist < _closest select 1) then {" \n
+       "			_closest = [_unit,_dist];" \n
+       "		};" \n
+       "	};" \n
+       "	_nearPlayer = _closest select 0;" \n
+       "	_distance = _closest select 1;" \n
+       "} else {" \n
+       "" \n
+       "	_nearPlayer = player;" \n
+       "	_distance = _thisMan distance player;" \n
+       "" \n
+       "};"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Give_intel";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Get_into_a_house">*/
+    class Get_into_a_house
+    {
+      name = "Get_into_a_house";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "private [""_newHouse""];" \n
+       "" \n
+       "" \n
+       "_thisMan forceWalk true;" \n
+       "_thisMan forceSpeed 2;" \n
+       "" \n
+       "_newHouse = nearestBuilding _thisMan;" \n
+       "" \n
+       "_thisMan moveTo (_newHouse buildingPos 1);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Move_completed">*/
+        class Move_completed
+        {
+          priority = 1.000000;
+          to="Wait_for_players";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Move_failed">*/
+        class Move_failed
+        {
+          priority = 0.000000;
+          to="Get_into_a_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wait_for_players">*/
+    class Wait_for_players
+    {
+      name = "Wait_for_players";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "player_gone">*/
+        class player_gone
+        {
+          priority = 1.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "END",
+  };
+};
+/*%FSM</COMPILE>*/

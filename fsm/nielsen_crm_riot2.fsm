@@ -1,0 +1,139 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, nielsen_cRm_riot">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,-868.207886,-110.843300,-778.207886,-60.843307,0.000000,"START"};
+item1[] = {"_",8,218,-749.371094,-95.849312,-701.813049,-74.337685,0.000000,""};
+item2[] = {"END",1,250,116.939407,-196.986908,206.939438,-146.986923,0.000000,"END"};
+item3[] = {"Go_to_road",2,250,-681.833923,-111.857948,-577.471863,-56.472145,0.000000,"Go to road"};
+item4[] = {"move_completed",4,218,-543.717407,-102.747414,-476.158051,-66.211845,1.000000,"move" \n "completed"};
+item5[] = {"move__failed",4,218,-663.880554,-14.913555,-596.321289,22.519672,0.000000,"move " \n "failed"};
+item6[] = {"join_ALICE___wait",2,250,-432.765869,-108.077087,-342.765869,-58.077087,0.000000,"join ALICE" \n "&" \n "wait for player"};
+item7[] = {"players__gone",4,218,-417.552185,-192.412491,-362.210419,-158.875107,100.000000,"players " \n "gone"};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,4};
+link3[] = {3,5};
+link4[] = {4,6};
+link5[] = {5,3};
+link6[] = {6,7};
+link7[] = {7,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,30,6316128,1,-1247.269043,582.566589,640.166626,-609.866516,1032,705,1};
+window[] = {0,-1,-1,-1,-1,884,75,1515,34,1,1050};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "nielsen_cRm_riot";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/"_thisMan = _target;" \n
+       "" \n
+       "if (CRM_DebugMode) then {diag_log format [""CRM - Civ %1 joining riot"",_thisman]};" \n
+       "" \n
+       "_thisMan setUnitPos ""UP"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Go_to_road";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END">*/
+    class END
+    {
+      name = "END";
+      init = /*%FSM<STATEINIT""">*/"if (CRM_DebugMode) then {diag_log format [""CRM - Civ %1 leaving riot"",_thisman]};" \n
+       "" \n
+       "_thisMan setUnitPos ""AUTO"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Go_to_road">*/
+    class Go_to_road
+    {
+      name = "Go_to_road";
+      init = /*%FSM<STATEINIT""">*/"_roads = (getPos _thisMan) nearRoads 50;" \n
+       "" \n
+       "_newRoad = _roads select (floor(random(count _roads)));" \n
+       "" \n
+       "_thisMan moveTo (getPos _newRoad);"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "move_completed">*/
+        class move_completed
+        {
+          priority = 1.000000;
+          to="join_ALICE___wait";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "move__failed">*/
+        class move__failed
+        {
+          priority = 0.000000;
+          to="Go_to_road";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _thisMan;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "join_ALICE___wait">*/
+    class join_ALICE___wait
+    {
+      name = "join_ALICE___wait";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "_thisMan addMagazine ""HandGrenade_Stone"";" \n
+       "" \n
+       "[_thisMan] call BIS_ALICE_fnc_civilianSet;" \n
+       "hint ""Civ going to ALICE"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "players__gone">*/
+        class players__gone
+        {
+          priority = 100.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"!([_thisMan, 1000] call CBA_fnc_nearPlayer)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "END",
+  };
+};
+/*%FSM</COMPILE>*/

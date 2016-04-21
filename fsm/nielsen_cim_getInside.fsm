@@ -1,0 +1,228 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, getInside">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,-93.837219,-122.093018,-3.837214,-72.093018,0.000000,"START"};
+item1[] = {"_",8,218,48.255814,-107.558144,96.395355,-80.813950,0.000000,""};
+item2[] = {"Nearest_house",2,250,123.837212,-119.186043,213.837219,-69.186043,0.000000,"Nearest house"};
+item3[] = {"Bad_house",4,218,248.836487,-30.231936,320.231842,11.047125,0.000000,"Bad house"};
+item4[] = {"Find_new_house",2,250,241.278305,-117.441261,331.278320,-67.441261,0.000000,"Find new" \n "house"};
+item5[] = {"Bad_house",4,218,372.092712,-145.347931,448.720612,-99.417824,2.000000,"Bad" \n "house"};
+item6[] = {"All_bad",4,218,372.674133,-71.510620,449.302032,-25.580521,0.000000,"All" \n "bad"};
+item7[] = {"Debug_msg_and_ex",2,250,363.371765,20.931227,453.371796,70.931236,0.000000,"Debug msg" \n "and exit"};
+item8[] = {"moveTo_new_house",2,250,566.861206,-189.534180,656.861206,-139.534180,0.000000,"moveTo new" \n "house position"};
+item9[] = {"Completed",4,218,533.720581,-95.929535,605.115906,-54.650482,3.000000,"Completed"};
+item10[] = {"Failed",4,218,626.162537,-95.348137,697.557861,-54.069084,0.000000,"Failed"};
+item11[] = {"END",1,250,576.562866,21.390232,666.562927,71.390213,0.000000,"END"};
+item12[] = {"_",8,218,489.367981,32.908493,539.032776,58.086803,0.000000,""};
+item13[] = {"Good_house",4,218,250.289337,-184.881851,321.684662,-143.602798,3.000000,"Good house"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {2,13};
+link4[] = {3,4};
+link5[] = {4,5};
+link6[] = {4,6};
+link7[] = {4,13};
+link8[] = {5,4};
+link9[] = {6,7};
+link10[] = {7,12};
+link11[] = {8,9};
+link12[] = {8,10};
+link13[] = {9,11};
+link14[] = {10,8};
+link15[] = {12,11};
+link16[] = {13,8};
+globals[] = {0.000000,0,0,0,0,640,480,1,16,6316128,1,-210.276779,800.225037,274.244385,-416.069366,1032,705,1};
+window[] = {0,-1,-1,-32000,-32000,996,211,1651,146,1,1050};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "getInside";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "private [""_house"",""_unit"",""_pos"",""_attempts"",""_allHouses"",""_newPos""];" \n
+       "_unit = _target;" \n
+       "" \n
+       "_Unit setUnitPos ""Up"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Nearest_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Nearest_house">*/
+    class Nearest_house
+    {
+      name = "Nearest_house";
+      init = /*%FSM<STATEINIT""">*/"_house = nearestBuilding _unit;" \n
+       "_pos = 0;" \n
+       "while { format [""%1"", _house buildingPos _pos] != ""[0,0,0]"" } do {_pos = _pos + 1};" \n
+       "_pos = _pos - 1; " \n
+       "" \n
+       "" \n
+       "_attempts = 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Good_house">*/
+        class Good_house
+        {
+          priority = 3.000000;
+          to="moveTo_new_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_pos > 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Bad_house">*/
+        class Bad_house
+        {
+          priority = 0.000000;
+          to="Find_new_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_pos <= 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Find_new_house">*/
+    class Find_new_house
+    {
+      name = "Find_new_house";
+      init = /*%FSM<STATEINIT""">*/"_allHouses = getPos _unit nearEntities [""HOUSE"",150];" \n
+       "" \n
+       "_house = _allHouses select (floor(random(count _allHouses)));" \n
+       "_pos = 0;" \n
+       "while { format [""%1"", _house buildingPos _pos] != ""[0,0,0]"" } do {_pos = _pos + 1};" \n
+       "_pos = _pos - 1; " \n
+       "_newPos = round random _pos;" \n
+       "" \n
+       "_attempts = _attempts + 1;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Good_house">*/
+        class Good_house
+        {
+          priority = 3.000000;
+          to="moveTo_new_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"_pos > 1;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Bad_house">*/
+        class Bad_house
+        {
+          priority = 2.000000;
+          to="Find_new_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_pos <= 1) AND( _attempts < 50));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "All_bad">*/
+        class All_bad
+        {
+          priority = 0.000000;
+          to="Debug_msg_and_ex";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"((_pos <= 1) AND( _attempts >= 50));"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Debug_msg_and_ex">*/
+    class Debug_msg_and_ex
+    {
+      name = "Debug_msg_and_ex";
+      init = /*%FSM<STATEINIT""">*/"diag_log format [""CIM_ERROR: Unit %1 failed to find a house to enter!"",_unit];"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "moveTo_new_house">*/
+    class moveTo_new_house
+    {
+      name = "moveTo_new_house";
+      init = /*%FSM<STATEINIT""">*/"_newPos = round random _pos;" \n
+       "" \n
+       "_unit moveTo (_house buildingPos _newPos);" \n
+       "" \n
+       ""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Completed">*/
+        class Completed
+        {
+          priority = 3.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToCompleted _unit;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Failed">*/
+        class Failed
+        {
+          priority = 0.000000;
+          to="moveTo_new_house";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"moveToFailed _unit;"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END">*/
+    class END
+    {
+      name = "END";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "END",
+  };
+};
+/*%FSM</COMPILE>*/

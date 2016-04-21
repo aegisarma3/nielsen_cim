@@ -1,0 +1,158 @@
+/*%FSM<COMPILE "C:\Program Files\Bohemia Interactive\Tools\FSM Editor Personal Edition\scriptedFSM.cfg, nielsen_crm_ambush">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"START",0,250,99.175774,50.178688,169.036026,89.048859,0.000000,"START"};
+item1[] = {"_",8,218,207.332123,53.628456,247.270386,86.053589,0.000000,""};
+item2[] = {"Find_nearest_pla",2,250,312.116638,44.742859,402.116638,94.742859,0.000000,"Find" \n "nearest" \n "player"};
+item3[] = {"_",8,218,330.357147,144.776627,385.981049,177.188873,0.000000,""};
+item4[] = {"Wait_to_attack_or",2,250,313.297394,226.023819,403.297394,276.023804,0.000000,"Wait to" \n "attack or" \n "delete"};
+item5[] = {"player_is_near",4,218,371.146423,339.751526,467.179657,422.503082,1.000000,"player" \n "is near"};
+item6[] = {"Attack_Player",2,250,284.114685,500.688477,422.716492,571.209229,0.000000,"Attack" \n "Player"};
+item7[] = {"All_players_gone",4,218,107.985977,497.252197,204.205780,577.429077,10.000000,"All" \n "players" \n "gone"};
+item8[] = {"Clean_up",2,250,-60.188553,513.908325,29.811464,563.908325,0.000000,"Clean up"};
+item9[] = {"_",8,218,-190.592743,513.227356,-100.592682,563.227356,0.000000,""};
+item10[] = {"END",1,250,-329.362854,515.329956,-239.362823,565.329956,0.000000,"END"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,3};
+link3[] = {3,4};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {6,7};
+link7[] = {7,8};
+link8[] = {8,9};
+link9[] = {9,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,15,6316128,1,-349.263336,547.160095,648.224609,-15.332108,870,644,1};
+window[] = {0,-1,-1,-1,-1,964,175,1399,175,1,888};
+*//*%FSM</HEAD>*/
+class FSM
+{
+  fsmName = "nielsen_crm_ambush";
+  class States
+  {
+    /*%FSM<STATE "START">*/
+    class START
+    {
+      name = "START";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "hint ""starting"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Find_nearest_pla";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Find_nearest_pla">*/
+    class Find_nearest_pla
+    {
+      name = "Find_nearest_pla";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="Wait_to_attack_or";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Wait_to_attack_or">*/
+    class Wait_to_attack_or
+    {
+      name = "Wait_to_attack_or";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "player_is_near">*/
+        class player_is_near
+        {
+          priority = 1.000000;
+          to="Attack_Player";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Attack_Player">*/
+    class Attack_Player
+    {
+      name = "Attack_Player";
+      init = /*%FSM<STATEINIT""">*/"" \n
+       "hint ""attacking"";"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "All_players_gone">*/
+        class All_players_gone
+        {
+          priority = 10.000000;
+          to="Clean_up";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Clean_up">*/
+    class Clean_up
+    {
+      name = "Clean_up";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "_">*/
+        class _
+        {
+          priority = 0.000000;
+          to="END";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "END">*/
+    class END
+    {
+      name = "END";
+      init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+      };
+    };
+    /*%FSM</STATE>*/
+  };
+  initState="START";
+  finalStates[] =
+  {
+    "END",
+  };
+};
+/*%FSM</COMPILE>*/

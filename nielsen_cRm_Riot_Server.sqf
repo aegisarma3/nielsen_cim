@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CRM) Civilian Reaction Module		///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cRm_riot_server.sqf:		///////////////////
 ///////////	This script creates random riots	///////////////////
 ///////////	when pacifying civilians.			///////////////////
@@ -27,15 +27,15 @@ _riotFNC = {
 
 //Control structure
 while {true} do {
-	
+
 	waitUntil {(CRM_Riot_Cause select 0)};
 	if (CRM_DebugMode) then {diag_log "CRM - Riot triggered";};
 	_Cause = CRM_Riot_Cause select 1;
-	
+
 	//force riot if enabled or get set chance value
 	private ["_newchance"];
 	if ((count CRM_Riot_Cause) == 3) then {_Newchance = 1} else {_newChance = _chance};
-	
+
 	_rnd = random 1;
 	//Check against chance
 	if (_rnd < _chance) then {
@@ -43,8 +43,8 @@ while {true} do {
 		_Civilians = [];
 		_nearMen = (getPos _Cause) nearEntities ["Man",_range];
 		for "_y" from 0 to (count _nearMen - 1) do {
-			if (side (_nearMen select _y) == CIVILIAN && !((group (_nearMen select _y)) in CRM_AllGroups) && !((_nearMen select _y) in CIM_List_Keycuff) && isNil {(_nearMen select _y) getVariable "reezo_ied_triggerman"} && isNil {(_nearMen select _y) getVariable "reezo_ied_trigger"}) then {
-				_Civilians = _Civilians + [(_nearMen select _y)];			
+			if (side (_nearMen select _y) == CIVILIAN && !((group (_nearMen select _y)) in CRM_AllGroups) && !((_nearMen select _y) in CIM_List_Keycuff) && isNil {(_nearMen select _y) getVariable "reezo_eod_triggerman"} && isNil {(_nearMen select _y) getVariable "reezo_eod_trigger"}) then {
+				_Civilians = _Civilians + [(_nearMen select _y)];
 			};
 		};
 
@@ -52,11 +52,11 @@ while {true} do {
 		{
 			[_x] call _riotFNC;
 		} forEach _civilians;
-	
+
 		//Debug
 		if (CRM_DebugMode) then {diag_log format ["CRM - Riot triggered. Civilians: %1",_Civilians];};
 	};
 	_CBApubVar = ["CRM_Riot_Cause", [false,(CRM_Riot_Cause select 1)]] call CBA_fnc_publicVariable;
-	sleep 1;	
+	sleep 1;
 
 };

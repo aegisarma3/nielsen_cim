@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Interaction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cim_getDown_client.sqf:		///////////////////
-///////////	Executed by action menu on civilian.///////////////////		
+///////////	Executed by action menu on civilian.///////////////////
 ///////////	This script collects info about the ///////////////////
 ///////////	civilians in the area and passes it	///////////////////
 ///////////	to the server						///////////////////
@@ -11,8 +11,8 @@
 
 private ["_soldier","_rangeMax","_propability","_interval","_object","_newTarget","_NewCivilians","_crowd"];
 _soldier = (_this select 3) select 0;
-_crowd = (_this select 3) select 1; 
-_newTarget = cursorTarget; 
+_crowd = (_this select 3) select 1;
+_newTarget = cursorTarget;
 if !(local _soldier) exitWith{};
 
 _rangeMax = 50;
@@ -31,10 +31,10 @@ if (_crowd) then {
 	_NewCivilians = [];
 	_nearMen = (getPos _object) nearEntities ["Man",_rangeMax];
 	for "_y" from 0 to (count _nearMen - 1) do {
-		if (side (_nearMen select _y) == CIVILIAN && isNil {(_nearMen select _y) getVariable "reezo_ied_triggerman"} && isNil {(_nearMen select _y) getVariable "reezo_ied_trigger"}) then {
+		if (side (_nearMen select _y) == CIVILIAN && isNil {(_nearMen select _y) getVariable "reezo_eod_triggerman"} && isNil {(_nearMen select _y) getVariable "reezo_eod_trigger"}) then {
 			_rnd = random 1;
 			if (_rnd < _propability) then {
-				_NewCivilians = _NewCivilians + [(_nearMen select _y)];			
+				_NewCivilians = _NewCivilians + [(_nearMen select _y)];
 			};
 		};
 	};

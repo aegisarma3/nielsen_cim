@@ -43,7 +43,7 @@ while {true} do {
 	_civilians = [];
 	_nearMen = _pos nearEntities ["Man",_range];
 	for "_y" from 0 to (count _nearMen - 1) do {
-		if (side (_nearMen select _y) == CIVILIAN && !((group (_nearMen select _y)) in CRM_AllGroups) && !((_nearMen select _y) in CIM_List_Keycuff) && isNil {(_nearMen select _y) getVariable "reezo_ied_triggerman"} && isNil {(_nearMen select _y) getVariable "reezo_ied_trigger"}) then {
+		if (side (_nearMen select _y) == CIVILIAN && !((group (_nearMen select _y)) in CRM_AllGroups) && !((_nearMen select _y) in CIM_List_Keycuff) && isNil {(_nearMen select _y) getVariable "reezo_eod_triggerman"} && isNil {(_nearMen select _y) getVariable "reezo_eod_trigger"}) then {
 			_civilians = _civilians + [(_nearMen select _y)];
 		};
 	};

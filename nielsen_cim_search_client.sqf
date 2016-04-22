@@ -16,7 +16,7 @@ if !(local _soldier) exitWith{};
 _thisman = cursorTarget;
 
 //stop animation if any
-if ( !(_thisman in CIM_List_Keycuff) AND (group _thisMan != group CIM_getAway_Caller) AND isNil {_thisMan getVariable "reezo_ied_triggerman"} && isNil {_thisMan getVariable "reezo_ied_trigger"}) then {
+if ( !(_thisman in CIM_List_Keycuff) AND (group _thisMan != group CIM_getAway_Caller) AND isNil {_thisMan getVariable "reezo_eod_triggerman"} && isNil {_thisMan getVariable "reezo_eod_trigger"}) then {
 	if ((animationState _thisMan) != "") then { _thisMan enableAI "ANIM"; _thisMan enableAI "MOVE"; _broadcastedInfo = ["cim_animation", [true,_thisman,""]] call CBA_fnc_publicVariable;};
 };
 

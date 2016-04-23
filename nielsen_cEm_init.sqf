@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Extraction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cEm_init.sqf:				///////////////////
 ///////////	This script initializes the module	///////////////////
 ///////////	Gets and sets variables etc.		///////////////////
@@ -10,20 +10,20 @@
 waitUntil {(isDedicated) || !(isNull player)};
 
 //get setvariables from module or set default
-	
+
 	if (isNil {_this getVariable "nielsen_CEM_disableAUDIO"}) then
 	{
 		_this setVariable ["nielsen_CEM_disableAUDIO", false];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_CEM_disableSmoke"}) then
 	{
 		_this setVariable ["nielsen_CEM_disableSmoke", false];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_CEM_SmokeType"}) then
 	{
-		_this setVariable ["nielsen_CEM_SmokeType", ["SmokeShellRed"]];
+		_this setVariable ["nielsen_CEM_SmokeType", ["SmokeShellOrange"]];
 	};
 	if (isNil {_this getVariable "nielsen_CEM_DebugMode"}) then
 	{
@@ -35,7 +35,7 @@ waitUntil {(isDedicated) || !(isNull player)};
 	};
 
 
-//Mission maker Variable lists	
+//Mission maker Variable lists
 CEM_List_Extracted = [];
 
 //Set CIM_Key if not allready set by CIM_init.
@@ -57,7 +57,7 @@ nul = [] execVM "\nielsen_cim\nielsen_cEm_ChopperSpawn.sqf";
 
 //add eventhandler to check for smoke if player and allowed
 if !(CEM_Module getVariable "nielsen_CEM_disableSmoke") then {
-	
+
 	//Compile the checksmoke script
 	nielsen_CEM_checkSmokeFnc = compile (preprocessFileLineNumbers "\nielsen_cim\nielsen_CEM_CheckSmoke.sqf");
 
@@ -66,9 +66,9 @@ if !(CEM_Module getVariable "nielsen_CEM_disableSmoke") then {
 		player addEventHandler ["Fired", "_this spawn nielsen_CEM_checkSmokeFnc;"];
 	};
 };
-	
+
 	//run script to detec CIM_Key only if CIM_Module is not placed
-if ((!(isDedicated) OR ((isDedicated) and !(isServer))) AND (isNil "CIM_Detecting")) then {	
+if ((!(isDedicated) OR ((isDedicated) and !(isServer))) AND (isNil "CIM_Detecting")) then {
 	nul = [] execVM "\nielsen_cim\nielsen_CIM_key_detect.sqf";
 	CIM_Detecting = true;
 };
@@ -76,7 +76,7 @@ if ((!(isDedicated) OR ((isDedicated) and !(isServer))) AND (isNil "CIM_Detectin
 	//ONLY CLIENT
 	//Create trigger to call for extraction on players only
 if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
-	CEM_Trigger1 = createTrigger ["EmptyDetector",getPos CEM_Module]; 
+	CEM_Trigger1 = createTrigger ["EmptyDetector",getPos CEM_Module];
 	CEM_Trigger1 setTriggerArea [0,0,0,true];
 	CEM_Trigger1 setTriggerActivation["INDIA","PRESENT",true];
 	CEM_Trigger1 setTriggerStatements["this", "null = [""CEM_ExtractPos"", getPos player] call CBA_fnc_publicVariable; null = [""CEM_GoCode"", true] call CBA_fnc_publicVariable; nul = [player] execVM ""\nielsen_cim\nielsen_CEM_ChopperCall.sqf"";", ""];
@@ -86,4 +86,3 @@ if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
 //Show debug settings?
 CEM_DebugMode = CEM_Module getVariable "nielsen_CEM_DebugMode";
 //onMapSingleClick "player setpos _pos";
-

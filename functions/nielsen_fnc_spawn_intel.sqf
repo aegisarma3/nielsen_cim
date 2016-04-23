@@ -24,6 +24,6 @@
 	};
 
 	_CivType = _civilians select (floor(random(count _civilians)));
-	_unit = _grp createVehicle [_CivType, _SpawnPos, [], 0, "NONE"];
+	_unit = _grp createUnit [_CivType, _SpawnPos, [], 0, "NONE"];
 	removeAllitems _unit;
 	_unit doFSM ["\nielsen_cim\fsm\nielsen_crm_intel.fsm",getPos _unit,_unit];

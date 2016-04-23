@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CRM) Civilian Reaction Module		///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cRm_events_SpawnFNCs.sqf:	///////////////////
 ///////////	This script makes functions			///////////////////
 ///////////	to spawn civilians for events.		///////////////////
@@ -16,11 +16,11 @@
 	_multiplier = _this select 1;
 	_spawnCount = round ((2 + random 6) * _multiplier);
 	_civilians = CRM_Module getVariable "nielsen_crm_civilians";
-	if (true) then {_enemyType = "TK_INS_Warlord_EP1";} else {_enemyType = "US_Delta_Force_TL_EP1";};
+	if (true) then {_enemyType = "O_Soldier_TL_F";} else {_enemyType = "B_Soldier_TL_F";};
 	_grp = createGroup CRM_EnemySide;
 	_grp setBehaviour "STEALTH";
 	_grp setCombatMode "GREEN";
-	
+
 	//Spawn OPFOR LEADER (to make sure the civs are hostile)
 	//Find spawn pos in building
 	_spawnPos = [0,0,0];
@@ -29,11 +29,11 @@
 		_house = _newPos nearestObject "HOUSE";
 		_SpawnPos = _house buildingPos 0;
 	};
-	_unit = _grp createVehicle [_enemyType, _spawnPos, [], 0, "NONE"];
+	_unit = _grp createUnit [_enemyType, _spawnPos, [], 0, "NONE"];
 	_leader = _unit;
-	
+
 	//Spawn civilians
-	for "_y" from 1 to _spawnCount do {		
+	for "_y" from 1 to _spawnCount do {
 		//Find new hidden spawn position
 		_spawnPos = [0,0,0];
 		while { format ["%1", _spawnPos] == "[0,0,0]" } do {
@@ -44,22 +44,21 @@
 		_No = 0;
 		while { format ["%1", _house buildingPos _No] != "[0,0,0]" } do {_No = _No + 1};
 		_SpawnPos = _house buildingPos (floor random  _No);
-		
+
 		_CivType = _civilians select (floor(random(count _civilians)));
-		_unit = _grp createVehicle [_CivType, _SpawnPos, [], 0, "NONE"];
-		
+		_unit = _grp createUnit [_CivType, _SpawnPos, [], 0, "NONE"];
+
 		_unit setUnitPos "DOWN";
-		_unit addWeapon "AK_74";
-		_unit addMagazine "30Rnd_545x39_AK"; _unit addMagazine "30Rnd_545x39_AK"; _unit addMagazine "30Rnd_545x39_AK"; _unit addMagazine "30Rnd_545x39_AK";
+		_unit addWeapon "srifle_DMR_03_F";
+		_unit addMagazine "20Rnd_762x51_Mag"; _unit addMagazine "20Rnd_762x51_Mag"; _unit addMagazine "20Rnd_762x51_Mag"; _unit addMagazine "20Rnd_762x51_Mag";
 		_unit setskill ["Endurance",0.4];
 		_unit setskill ["aimingAccuracy",0.1];
 		_unit setskill ["aimingSpeed",0.2];
 		_unit setskill ["aimingShake",0.1];
 		_unit setskill ["spotDistance",0.2];
 		_unit setskill ["courage",0.4];
-		
-		if (CRM_DebugMode) then {diag_log format ["CRM - Ambush triggered. Spawning %1 hostile civilians.",_spawnCount];};	
-	};
-//Return value (no semicolon)	
-[_grp,_pos,_leader]
 
+		if (CRM_DebugMode) then {diag_log format ["CRM - Ambush triggered. Spawning %1 hostile civilians.",_spawnCount];};
+	};
+//Return value (no semicolon)
+[_grp,_pos,_leader]

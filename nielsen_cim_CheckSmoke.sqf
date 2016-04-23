@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Interaction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cim_checksmoke.sqf:			///////////////////
-///////////	Only runs on clients.				///////////////////		
+///////////	Only runs on clients.				///////////////////
 ///////////	called by 'FIRED' eventhandler		///////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////	This script collects info from		///////////////////
@@ -26,12 +26,12 @@ if (cim_key_pressed) then {
 	if (_ammotype in _smokeList) then {
 			_smokeShell = position player nearestObject _ammotype;
 			_unit groupchat "Marking LZ with smoke!";
-			
+
 			sleep 5; //Need sleep to make sure the smoke lands before placing Hpad
-			nul = createVehicle ["HeliHEmpty", getPos _smokeShell, [], 0, "NONE"]; 
-		
+			nul = createVehicle ["Land_HelipadEmpty_F", getPos _smokeShell, [], 0, "NONE"]; 
+
 		//Debug msg
-		if (CIM_DebugMode) then {diag_log diag_log "CIM Smoketype detected. Placing helipad for LZ";};		
+		if (CIM_DebugMode) then {diag_log diag_log "CIM Smoketype detected. Placing helipad for LZ";};
 	};
 };
 

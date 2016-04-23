@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Extraction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_CEM_checksmoke.sqf:			///////////////////
-///////////	Only runs on clients.				///////////////////		
+///////////	Only runs on clients.				///////////////////
 ///////////	called by 'FIRED' eventhandler		///////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////	This script collects info from		///////////////////
@@ -25,13 +25,13 @@ if (CIM_key_pressed) then {
 	//detecting smoke and placing Hpad
 	if (_ammotype in _smokeList) then {
 			_smokeShell = position player nearestObject _ammotype;
-			_unit groupchat "Marking LZ with smoke!";
-			
+			_unit groupchat "Marking LZ with orange smoke!";
+
 			sleep 5; //Need sleep to make sure the smoke lands before placing Hpad
-			nul = createVehicle ["HeliHEmpty", getPos _smokeShell, [], 0, "NONE"]; 
-		
+			nul = createVehicle ["HeliHEmpty", getPos _smokeShell, [], 0, "NONE"];
+
 		//Debug msg
-		if (CEM_DebugMode) then {diag_log diag_log "CEM Smoketype detected. Placing helipad for LZ";};		
+		if (CEM_DebugMode) then {diag_log diag_log "CEM Smoketype detected. Placing helipad for LZ";};
 	};
 };
 

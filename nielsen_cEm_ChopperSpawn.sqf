@@ -1,9 +1,9 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Extraction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cem_chopperSpawn.sqf:		///////////////////
-///////////	It runs on server AND clients		///////////////////		
+///////////	It runs on server AND clients		///////////////////
 ///////////	is executed by nielsen_cem_init.sqf.///////////////////
 ///////////////////////////////////////////////////////////////////
 ///////////	This script spawns a blackhawh with	///////////////////
@@ -21,7 +21,7 @@ if !(isServer) exitWith {};
 if (CEM_DebugMode) then {diag_log format ["CEM - Spawning chopper - side %1.",CEM_Side];};
 
 /////////////////////////////////////////////
-//////-------Get Spawn point-------////////////	
+//////-------Get Spawn point-------////////////
 //If no marker is selected use location of module//
 private ["_spawnPos"];
 if (isNil {CEM_Module getVariable "nielsen_CEM_marker"}) then
@@ -40,8 +40,8 @@ if (isNil {CEM_Module getVariable "nielsen_CEM_ChopperType"}) then {
 		//WEST
 		case west: {
 
-			_chopperType = "UH60M_EP1";
-			_crewType = ["US_Soldier_Pilot_EP1","US_Soldier_Crew_EP1"];
+			_chopperType = "B_Heli_Transport_01_F";
+			_crewType = ["B_Helipilot_F","B_helicrew_F"];
 			_crewPos = [12,0,3,9,10];
 			_gunners = true;
 
@@ -49,17 +49,17 @@ if (isNil {CEM_Module getVariable "nielsen_CEM_ChopperType"}) then {
 		//EAST
 		case east: {
 
-			_chopperType = "Mi17_TK_EP1";
-			_crewType = ["RU_Soldier_Pilot","RU_Soldier_Crew"];
+			_chopperType = "O_Heli_Light_02_v2_F";
+			_crewType = ["O_helipilot_F","O_helipilot_F"];
 			_crewPos = [0,13,1,2,5];
-			_gunners = true;
-	
+			_gunners = false;
+
 		};
 		//RESISTANCE
 		case resistance: {
 
-			_chopperType = "Ka60_PMC";
-			_crewType = ["UN_CDF_Soldier_Pilot_EP1","UN_CDF_Soldier_Crew_EP1"];
+			_chopperType = "I_Heli_Transport_02_F";
+			_crewType = ["I_helipilot_F","I_helipilot_F"];
 			_crewPos = [0,1,3,5];
 			_gunners = false;
 
@@ -75,27 +75,28 @@ if (isNil {CEM_Module getVariable "nielsen_CEM_ChopperType"}) then {
 /////////////////////////////////////////////
 //////-------Spawn chopper-------////////////
 //Spawn chopper on invisible helipad
-_helipad = createVehicle ["HeliHEmpty", _spawnPos, [], 0, "NONE"];
+_helipad = createVehicle ["Land_HelipadEmpty_F", _spawnPos, [], 0, "NONE"];
 CEM_Chopper = createVehicle [_chopperType, _spawnPos, [], 0, "NONE"];
+CEM_Chopper setVehicleVarName "CEM_Chopper";
 //Spawn crew in chopper
-CEM_HeliGrp = createGroup CEM_Side;
+CEM_HeliGrp = createGroup west;
 	//Pilot
-_unit = CEM_HeliGrp createVehicle [(_crewType select 0), _spawnPos, [], 0, "NONE"]; 
-_unit moveInDriver CEM_Chopper;	
+_unit = CEM_HeliGrp createUnit [(_crewType select 0), _spawnPos, [], 0, "NONE"];
+_unit moveInDriver CEM_Chopper;
 	//Co-pilot
-_unit = CEM_HeliGrp createVehicle [(_crewType select 0), _spawnPos, [], 0, "NONE"]; 
+_unit = CEM_HeliGrp createUnit [(_crewType select 0), _spawnPos, [], 0, "NONE"];
 _unit moveInCargo [CEM_Chopper,(_crewPos select 0)];
 	//Crew
-for "_y" from 1 to (count _crewPos - 1) do {	
-	_unit = CEM_HeliGrp createVehicle [(_crewType select 1), _spawnPos, [], 0, "NONE"]; 
-	_unit moveInCargo [CEM_Chopper,(_crewPos select _y)];	
+for "_y" from 1 to (count _crewPos - 1) do {
+	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
+	_unit moveInCargo [CEM_Chopper,(_crewPos select _y)];
 };
 	//Gunners?
 if (_gunners) then {
-	_unit = CEM_HeliGrp createVehicle [(_crewType select 1), _spawnPos, [], 0, "NONE"]; 
-	_unit MoveInTurret [CEM_Chopper,[0]];	
-	_unit = CEM_HeliGrp createVehicle [(_crewType select 1), _spawnPos, [], 0, "NONE"]; 
-	_unit MoveInTurret [CEM_Chopper,[1]];	
+	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
+	_unit MoveInTurret [CEM_Chopper,[0]];
+	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
+	_unit MoveInTurret [CEM_Chopper,[1]];
 };
 
 /////////////////////////////////////////////
@@ -134,18 +135,18 @@ CEM_HeliGrp addWaypoint [_spawnPos, 5];
 private ["_CBApubVar"];
 while {true} do {
 	waitUntil {CEM_ClearCivs};
-	
+
 	//Debug
 	if (CEM_DebugMode) then {diag_log format ["CEM_Chopper is en route. Deleting civilians: %1, CIM_Arrested_List is %2",CEM_ChopperList,CIM_List_Arrested];};
-	
+
 	{
-		doGetOut _x; 
-		waitUntil {vehicle _x == _x}; 
+		doGetOut _x;
+		waitUntil {vehicle _x == _x};
 		deleteVehicle _x;
-	} forEach CEM_ChopperList; 
+	} forEach CEM_ChopperList;
 	//PubVar empty chopperlist
 	_CBApubVar = ["CEM_ChopperList", []] call CBA_fnc_publicVariable;
 	CEM_ClearCivs = false;
-	
+
 	sleep 2;
 };

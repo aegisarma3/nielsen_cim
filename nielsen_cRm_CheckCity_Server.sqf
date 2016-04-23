@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CRM) Civilian Reaction Module		///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cRm_control_server.sqf:		///////////////////
 ///////////	This script triggers events.		///////////////////
 ///////////										///////////////////
@@ -30,7 +30,7 @@ while {true} do {
 		if (vehicle _x != _x) then {_checkUnit = vehicle _x;};
 		_locationTypes = ["NameCityCapital","NameCity","NameVillage","NameLocal"];
 		_nearestCity = (nearestLocations [_checkUnit,_locationTypes, _range]) select 0;
-		
+
 		//If near a a new city check if allready setup, else set it up
 		if !(isNull _nearestCity) then {
 			if (CRM_DebugMode) then {diag_log format ["CRM - Cheking for city. Nearest city is %1.",_nearestCity];};
@@ -45,12 +45,12 @@ while {true} do {
 				};
 				//Remove from city list, so not to check more than once
 				CRM_AllCities = CRM_AllCities - [_nearestCity];
-				
+
 				//Debug
 				if (CRM_DebugMode) then {
-					diag_log format ["City %1 is spawning new event.",_nearestCity];	
+					diag_log format ["City %1 is spawning new event.",_nearestCity];
 					hint "Making event";
-					call compile format ["intelMarker_%1 = createMarker [""intelMarker_%1"", getPos _nearestCity]; intelMarker_%1 setMarkerShape ""ICON""; intelMarker_%1 setMarkerText ""City""; intelMarker_%1 setMarkerSize [1,1]; intelMarker_%1 setMarkerColor ""ColorRed""; intelMarker_%1 setMarkerType ""DOT"";",CRM_Intel_Found];
+					call compile format ["intelMarker_%1 = createMarker [""intelMarker_%1"", getPos _nearestCity]; intelMarker_%1 setMarkerShape ""ICON""; intelMarker_%1 setMarkerText ""City""; intelMarker_%1 setMarkerSize [1,1]; intelMarker_%1 setMarkerColor ""ColorRed""; intelMarker_%1 setMarkerType ""hd_dot"";",CRM_Intel_Found];
 					_pubVar = ["CRM_Intel_Found", CRM_Intel_Found + 1] call CBA_fnc_publicVariable;
 				};
 			};
@@ -58,5 +58,3 @@ while {true} do {
 		sleep 2;
 	} forEach CRM_SyncUnits;
 };
-	
-	

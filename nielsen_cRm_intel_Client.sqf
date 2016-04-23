@@ -53,7 +53,7 @@ _getInfoFNC = {
 
 						//Get random location around the enemy and place a maker
 						_offPos = [getpos _enemy,random 360,[20,100],false,1] call SHK_pos;
-						call compile format ["intelMarker_%1 = createMarker [""intelMarker_%1"", _offPos]; intelMarker_%1 setMarkerShape ""ICON""; intelMarker_%1 setMarkerText ""Aprox. enemy location""; intelMarker_%1 setMarkerSize [1,1]; intelMarker_%1 setMarkerColor ""ColorRed""; intelMarker_%1 setMarkerType ""DOT"";",CRM_Intel_Found];
+						call compile format ["intelMarker_%1 = createMarker [""intelMarker_%1"", _offPos]; intelMarker_%1 setMarkerShape ""ICON""; intelMarker_%1 setMarkerText ""Aprox. enemy location""; intelMarker_%1 setMarkerSize [1,1]; intelMarker_%1 setMarkerColor ""ColorRed""; intelMarker_%1 setMarkerType ""hd_dot"";",CRM_Intel_Found];
 						_pubVar = ["CRM_Intel_Found", CRM_Intel_Found + 1] call CBA_fnc_publicVariable;
 
 						//Give hint to the player that he got intel
@@ -64,7 +64,7 @@ _getInfoFNC = {
 
 						//Get random location around the enemy and place a maker
 						_offPos = [getpos _ied,random 360,[5,30],false,1] call SHK_pos;
-						call compile format ["intelMarker_%1 = createMarker [""intelMarker_%1"", _offPos]; intelMarker_%1 setMarkerShape ""ICON""; intelMarker_%1 setMarkerText ""Aprox. IED location""; intelMarker_%1 setMarkerSize [1,1]; intelMarker_%1 setMarkerColor ""ColorRed""; intelMarker_%1 setMarkerType ""DOT"";",CRM_Intel_Found];
+						call compile format ["intelMarker_%1 = createMarker [""intelMarker_%1"", _offPos]; intelMarker_%1 setMarkerShape ""ICON""; intelMarker_%1 setMarkerText ""Aprox. IED location""; intelMarker_%1 setMarkerSize [1,1]; intelMarker_%1 setMarkerColor ""ColorRed""; intelMarker_%1 setMarkerType ""hd_dot"";",CRM_Intel_Found];
 						_pubVar = ["CRM_Intel_Found", CRM_Intel_Found + 1] call CBA_fnc_publicVariable;
 
 						//Give hint to the player that he got intel

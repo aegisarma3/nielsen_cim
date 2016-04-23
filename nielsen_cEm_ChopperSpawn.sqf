@@ -77,9 +77,9 @@ if (isNil {CEM_Module getVariable "nielsen_CEM_ChopperType"}) then {
 //Spawn chopper on invisible helipad
 _helipad = createVehicle ["Land_HelipadEmpty_F", _spawnPos, [], 0, "NONE"];
 CEM_Chopper = createVehicle [_chopperType, _spawnPos, [], 0, "NONE"];
-CEM_Chopper setVehicleVarName "CEM_Chopper";
+//CEM_Chopper setVehicleVarName "CEM_Chopper";
 //Spawn crew in chopper
-CEM_HeliGrp = createGroup west;
+CEM_HeliGrp = createGroup CEM_Side;
 	//Pilot
 _unit = CEM_HeliGrp createUnit [(_crewType select 0), _spawnPos, [], 0, "NONE"];
 _unit moveInDriver CEM_Chopper;
@@ -87,10 +87,12 @@ _unit moveInDriver CEM_Chopper;
 _unit = CEM_HeliGrp createUnit [(_crewType select 0), _spawnPos, [], 0, "NONE"];
 _unit moveInCargo [CEM_Chopper,(_crewPos select 0)];
 	//Crew
+/*
 for "_y" from 1 to (count _crewPos - 1) do {
 	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
 	_unit moveInCargo [CEM_Chopper,(_crewPos select _y)];
 };
+*/
 	//Gunners?
 if (_gunners) then {
 	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];

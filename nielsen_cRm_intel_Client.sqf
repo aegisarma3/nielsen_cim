@@ -12,6 +12,8 @@ if (CRM_DebugMode) then {diag_log "nielsen_cRm_intel_client.sqf is running.";};
 
 private ["_getInfoFNC","_soldier","_enemies","_nearMen","_enemy","_offPos","_intelType","_nearIEDs","_ied","_viableIntel","_rnd"];
 
+CRM_newInfo= false;
+
 	//Function to get intel from civilian
 _getInfoFNC = {
 	//Set intel type (10% chance of bad intel)

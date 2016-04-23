@@ -14,7 +14,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Modules_F","Extended_Eventhandlers"};
+		requiredAddons[] = {"A3_Modules_F","Extended_Eventhandlers","ace_main"};
 		version = "02";
 		author[] = {"Nielsen"};
 	};
@@ -87,6 +87,8 @@ class cfgSounds
 		titles[] = {};
 	};
 };
+
+//MODULES
 class CfgVehicles
 {
 	class Logic;

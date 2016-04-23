@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Interaction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cim_init.sqf:				///////////////////
 ///////////	This script initializes the module	///////////////////
 ///////////	Gets and sets variables etc.		///////////////////
@@ -10,17 +10,17 @@
 waitUntil {(isDedicated) || !(isNull player)};
 
 //get setvariables from module or set default
-	
+
 	if (isNil {_this getVariable "nielsen_cim_authority"}) then
 	{
 		_this setVariable ["nielsen_cim_authority", 0.9];
 	};
-	
-	if (isNil {_this getVariable "nielsen_cim_enableACE"}) then
+
+	/*if (isNil {_this getVariable "nielsen_cim_enableACE"}) then
 	{
 		_this setVariable ["nielsen_cim_enableACE", false];
-	};
-	
+	};*/
+
 	if (isNil {_this getVariable "nielsen_cim_disableAUDIO"}) then
 	{
 		_this setVariable ["nielsen_cim_disableAUDIO", false];
@@ -30,7 +30,7 @@ waitUntil {(isDedicated) || !(isNull player)};
 	{
 		_this setVariable ["nielsen_cim_DebugMode", true];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_cim_key"}) then
 	{
 		_this setVariable ["nielsen_cim_key", 42]; //42 = shift key
@@ -43,12 +43,12 @@ waitUntil {(isDedicated) || !(isNull player)};
 	{
 		_this setVariable ["nielsen_cim_key_GetDown", ""];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_cim_key_getAway"}) then
 	{
 		_this setVariable ["nielsen_cim_key_getAway", ""];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_cim_key_getInside"}) then
 	{
 		_this setVariable ["nielsen_cim_key_getInside", ""];
@@ -58,12 +58,12 @@ waitUntil {(isDedicated) || !(isNull player)};
 	{
 		_this setVariable ["nielsen_cim_key_stopCar", ""];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_cim_key_Arrest"}) then
 	{
 		_this setVariable ["nielsen_cim_key_Arrest", ""];
 	};
-	
+
 	if (isNil {_this getVariable "nielsen_cim_key_Pacify"}) then
 	{
 		_this setVariable ["nielsen_cim_key_Pacify", ""];
@@ -78,7 +78,7 @@ waitUntil {(isDedicated) || !(isNull player)};
 	};
 
 
-//Variable lists	
+//Variable lists
 CIM_List_Keycuff = [];
 CIM_List_Arrested = [];
 CIM_List_Searched = [];
@@ -126,7 +126,7 @@ if (isServer) then {
 //CLIENT-SIDE: run addaction script and add eventhandler to check for CIM-Key
 if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
 	nul = [player] execVM "\nielsen_cim\nielsen_cim_addActions.sqf";
-	
+
 	//run script to add displayeventhandler for detecting cim_key
 	if (isNil "CIM_Detecting") then {
 		nul = [] execVM "\nielsen_cim\nielsen_cim_key_detect.sqf";
@@ -143,6 +143,6 @@ CIM_DebugMode = CIM_Module getVariable "nielsen_cim_DebugMode";
 SHK_pos = compile (preprocessFileLineNumbers "\nielsen_cim\SHK_pos.sqf");
 
 //Run script on all clients to show pacify animation when needed
-if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
+/*if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
 	nul = [] execVM "\nielsen_cim\nielsen_cim_animation_client.sqf";
-};
+};*/

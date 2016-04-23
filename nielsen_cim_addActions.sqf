@@ -1,7 +1,7 @@
 ///////////////////////////////////////////////////////////////////
 ///////////	(CIM) Civilian Interaction Module	///////////////////
 ///////////				By: Nielsen				///////////////////
-///////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////
 ///////////	nielsen_cim_addactions.sqf:			///////////////////
 ///////////	Executed by nielsen_cim_init.sqf.	///////////////////
 ///////////	This script adds the initial actions///////////////////
@@ -25,13 +25,14 @@ cim_action_StopCar = [['<t color="#FF0000">'+"Verbal Command: Get out of the car
 
 cim_action_Search = [['<t color="#FF0000">'+"Search individual!"+'</t>', "\nielsen_cim\nielsen_cim_search_Client.sqf", [_soldier], 10, false, true, CIM_Module getVariable "nielsen_cim_key_Search","cim_key_pressed AND (side cursorTarget == CIVILIAN) AND (alive cursorTarget) AND (cursorTarget distance player <= 2) AND (cursorTarget isKindof ""MAN"") AND !(cursorTarget in CIM_List_Searched)"]] call CBA_fnc_addPlayerAction;
 cim_action_Disarm = [['<t color="#FF0000">'+"Remove Belongings!"+'</t>', "\nielsen_cim\nielsen_cim_disarm_Client.sqf", [_soldier], 10, false, true, CIM_Module getVariable "nielsen_cim_key_Search","cim_key_pressed AND (side cursorTarget == CIVILIAN) AND (alive cursorTarget) AND (cursorTarget distance player <= 2) AND (cursorTarget isKindof ""MAN"") AND (cursorTarget in CIM_List_Searched)"]] call CBA_fnc_addPlayerAction;
-	
+
 	//Add action depending on if ACE is set enabled
-if (CIM_Module getVariable "nielsen_cim_enableACE") then {
+/*if (CIM_Module getVariable "nielsen_cim_enableACE") then {
 	cim_action_Pacify = [['<t color="#FF0000">'+"Key-cuff individual!"+'</t>', "\nielsen_cim\nielsen_cim_Pacify_Client.sqf", [_soldier], 9, false, true, CIM_Module getVariable "nielsen_cim_key_Pacify","cim_key_pressed AND (side cursorTarget == CIVILIAN) AND (alive cursorTarget) AND (cursorTarget distance player <= 2) AND (cursorTarget isKindof ""MAN"") AND !(cursorTarget in CIM_List_Keycuff) AND (_target hasWeapon ""ACE_KeyCuffs"")"]] call CBA_fnc_addPlayerAction;
 } else {
 	cim_action_Pacify = [['<t color="#FF0000">'+"Key-cuff individual!"+'</t>', "\nielsen_cim\nielsen_cim_Pacify_Client.sqf", [_soldier], 9, false, true, CIM_Module getVariable "nielsen_cim_key_Pacify","cim_key_pressed AND (side cursorTarget == CIVILIAN) AND (alive cursorTarget) AND (cursorTarget distance player <= 2) AND (cursorTarget isKindof ""MAN"") AND !(cursorTarget in CIM_List_Keycuff)"]] call CBA_fnc_addPlayerAction;
-};
+};*/
+cim_action_Pacify = [['<t color="#FF0000">'+"Key-cuff individual!"+'</t>', "\nielsen_cim\nielsen_cim_Pacify_Client.sqf", [_soldier], 9, false, true, CIM_Module getVariable "nielsen_cim_key_Pacify","cim_key_pressed AND (side cursorTarget == CIVILIAN) AND (alive cursorTarget) AND (cursorTarget distance player <= 2) AND (cursorTarget isKindof ""MAN"") AND !(cursorTarget in CIM_List_Keycuff) AND (""ACE_CableTie"" in items _target)"]] call CBA_fnc_addPlayerAction;
 
 cim_action_Arrest = [['<t color="#FF0000">'+"Detain individual!"+'</t>', "\nielsen_cim\nielsen_cim_arrest_Client.sqf", [_soldier], 8, false, true, CIM_Module getVariable "nielsen_cim_key_Arrest","cim_key_pressed AND (side cursorTarget == CIVILIAN) AND (alive cursorTarget) AND (cursorTarget distance player <= 2) AND (group cursorTarget != group _target) AND (cursorTarget isKindof ""MAN"")"]] call CBA_fnc_addPlayerAction;
 

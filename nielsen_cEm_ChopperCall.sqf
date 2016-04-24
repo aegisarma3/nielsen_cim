@@ -19,9 +19,31 @@ _soldier = _this select 0;
 CEM_NewChopperList = [];
 
 CEM_Trigger2 = createTrigger ["EmptyDetector", getPos _soldier];
-CEM_Trigger2 setTriggerActivation ["JULIET", "PRESENT", false];
+CEM_Trigger2 setTriggerActivation ["INDIA", "PRESENT", false];
 CEM_Trigger2 setTriggerStatements ["this", "null = [""CEM_allClear"", true] call CBA_fnc_publicVariable; deleteVehicle CEM_Trigger2; {if (_x in CEM_Chopper) then {CEM_ChopperList = CEM_ChopperList + [_x];}} forEach CIM_List_Arrested; CEM_newChopperList = CEM_Chopperlist; null = [""CEM_ChopperList"", CEM_newChopperList] call CBA_fnc_publicVariable; null = [""CIM_List_Arrested"", CIM_List_Arrested - CEM_ChopperList] call CBA_fnc_publicVariable; {[_x] joinSilent CEM_Chopper} forEach CEM_ChopperList; deleteMarker ""CEM_ExtractMarker""; null = [""CEM_ExtractPos"", [0,0,0]] call CBA_fnc_publicVariable; ", ""];
 CEM_Trigger2 setTriggerText "Give all clear";
+
+_condition2 = {
+    [_player, _target, []] call ace_common_fnc_canInteractWith
+};
+_statement2 = {
+    null = ["CEM_allClear", true] call CBA_fnc_publicVariable;
+    {if (_x in CEM_Chopper) then {CEM_ChopperList = CEM_ChopperList + [_x];}} forEach CIM_List_Arrested;
+    CEM_newChopperList = CEM_Chopperlist;
+    null = ["CEM_ChopperList", CEM_newChopperList] call CBA_fnc_publicVariable;
+    null = ["CIM_List_Arrested", CIM_List_Arrested - CEM_ChopperList] call CBA_fnc_publicVariable;
+    {[_x] joinSilent CEM_Chopper} forEach CEM_ChopperList;
+    deleteMarker "CEM_ExtractMarker";
+    null = ["CEM_ExtractPos", [0,0,0]] call CBA_fnc_publicVariable;
+    sleep 1;
+    [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment","Call_extract2"]] call ace_interact_menu_fnc_removeActionFromClass;
+};
+
+_action2 = ["Call_extract2"," Give all clear","\nielsen_cim\radio_extract.paa",_statement2,_condition2] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment"], _action2] call ace_interact_menu_fnc_addActionToClass;
+
+
+
 
 CEM_ExtractMarker = createMarker ["CEM_ExtractMarker", getPos _soldier];
 "CEM_ExtractMarker" setMarkerShape "ICON";

@@ -78,10 +78,25 @@ if ((!(isDedicated) OR ((isDedicated) and !(isServer))) AND (isNil "CIM_Detectin
 if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
 	CEM_Trigger1 = createTrigger ["EmptyDetector",getPos CEM_Module];
 	CEM_Trigger1 setTriggerArea [0,0,0,true];
-	CEM_Trigger1 setTriggerActivation["INDIA","PRESENT",true];
+	CEM_Trigger1 setTriggerActivation["JULIET","PRESENT",true];
 	CEM_Trigger1 setTriggerStatements["this", "null = [""CEM_ExtractPos"", getPos player] call CBA_fnc_publicVariable; null = [""CEM_GoCode"", true] call CBA_fnc_publicVariable; nul = [player] execVM ""\nielsen_cim\nielsen_CEM_ChopperCall.sqf"";", ""];
 	CEM_Trigger1 setTriggerText "Request POW extraction";
 };
+
+_condition = {
+    [_player, _target, []] call ace_common_fnc_canInteractWith
+};
+_statement = {
+		null = ["CEM_ExtractPos", getPos player] call CBA_fnc_publicVariable;
+		null = ["CEM_GoCode", true] call CBA_fnc_publicVariable;
+		nul = [player] execVM "\nielsen_cim\nielsen_CEM_ChopperCall.sqf";
+};
+
+_action = ["Call_extract1"," Request extraction","\nielsen_cim\radio_extract.paa",_statement,_condition] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToClass;
+
+
+
 
 //Show debug settings?
 CEM_DebugMode = CEM_Module getVariable "nielsen_CEM_DebugMode";

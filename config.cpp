@@ -14,7 +14,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"A3_Modules_F","Extended_Eventhandlers","ace_main"};
+		requiredAddons[] = {"A3_Modules_F","Extended_Eventhandlers"};
 		version = "02";
 		author[] = {"Nielsen"};
 	};

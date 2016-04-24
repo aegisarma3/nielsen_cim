@@ -36,11 +36,11 @@ _statement2 = {
     deleteMarker "CEM_ExtractMarker";
     null = ["CEM_ExtractPos", [0,0,0]] call CBA_fnc_publicVariable;
     sleep 1;
-    [(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment","Call_extract2"]] call ace_interact_menu_fnc_removeActionFromClass;
+    [(typeOf player), 1, ["ACE_SelfActions","ACE_CEM","GiveAllClear"]] call ace_interact_menu_fnc_removeActionFromClass;
 };
 
-_action2 = ["Call_extract2"," Give all clear","\nielsen_cim\radio_extract.paa",_statement2,_condition2] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment"], _action2] call ace_interact_menu_fnc_addActionToClass;
+_action3 = ["GiveAllClear"," Give all clear","\nielsen_cim\radio_extract.paa",_statement2,_condition2] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions","ACE_CEM"], _action3] call ace_interact_menu_fnc_addActionToClass;
 
 
 

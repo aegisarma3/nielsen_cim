@@ -83,6 +83,7 @@ if (!(isDedicated) OR ((isDedicated) and !(isServer))) then {
 	CEM_Trigger1 setTriggerText "Request POW extraction";
 };
 
+
 _condition = {
     [_player, _target, []] call ace_common_fnc_canInteractWith
 };
@@ -92,10 +93,10 @@ _statement = {
 		nul = [player] execVM "\nielsen_cim\nielsen_CEM_ChopperCall.sqf";
 };
 
-_action = ["Call_extract1"," Request extraction","\nielsen_cim\radio_extract.paa",_statement,_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","ACE_Equipment"], _action] call ace_interact_menu_fnc_addActionToClass;
-
-
+_action1 = ["ACE_CEM"," Extractions","\nielsen_cim\icon_cem.paa","",_condition] call ace_interact_menu_fnc_createAction;
+_action2 = ["Call_extract1"," Request extraction","\nielsen_cim\radio_extract.paa",_statement,_condition] call ace_interact_menu_fnc_createAction;
+[(typeOf player), 1, ["ACE_SelfActions"], _action1] call ace_interact_menu_fnc_addActionToClass;
+[(typeOf player), 1, ["ACE_SelfActions","ACE_CEM"], _action2] call ace_interact_menu_fnc_addActionToClass;
 
 
 //Show debug settings?

@@ -85,7 +85,7 @@ _unit = CEM_HeliGrp createUnit [(_crewType select 0), _spawnPos, [], 0, "NONE"];
 _unit moveInDriver CEM_Chopper;
 	//Co-pilot
 _unit = CEM_HeliGrp createUnit [(_crewType select 0), _spawnPos, [], 0, "NONE"];
-_unit moveInCargo [CEM_Chopper,(_crewPos select 0)];
+_unit MoveInTurret [CEM_Chopper,[0]];
 	//Crew
 /*
 for "_y" from 1 to (count _crewPos - 1) do {
@@ -96,9 +96,9 @@ for "_y" from 1 to (count _crewPos - 1) do {
 	//Gunners?
 if (_gunners) then {
 	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
-	_unit MoveInTurret [CEM_Chopper,[0]];
-	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
 	_unit MoveInTurret [CEM_Chopper,[1]];
+	_unit = CEM_HeliGrp createUnit [(_crewType select 1), _spawnPos, [], 0, "NONE"];
+	_unit MoveInTurret [CEM_Chopper,[2]];
 };
 
 /////////////////////////////////////////////
